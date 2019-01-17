@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EjecucionWebApplication.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,8 +17,9 @@ namespace EjecucionWebApplication.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
-            return View();
+            var obraService = new ObraService();
+            var model = obraService.obtenerObras();
+            return View(model);
         }
 
         public ActionResult Contact()
@@ -25,6 +27,13 @@ namespace EjecucionWebApplication.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+        public ActionResult Obra()
+        {
+            ViewBag.Message = "Lista de obras.";
+            var obraService = new ObraService();
+            var model = obraService.obtenerObras();
+            return View(model);
         }
     }
 }
