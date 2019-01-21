@@ -1,7 +1,33 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
+﻿<h3>@ViewBag.Message</h3>
+@Html.ActionLink("Agregar Obra", "create", "obra", null , new { @class = "btn btn-success" })
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Expediente Matriz</th>
+            <th>Fecha inicio</th>
+            <th>Monto original</th>
+            <th>Plazo original</th>
+            <th>Detalle</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
 
-<h2>Index</h2>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Obra in Model)
+        {
+            <tr>
+                <td>@Obra.ObraNombre
+                <td>@Obra.ExpMatriz</td>
+                <td>@Obra.FechaInicio</td>
+                <td>@Obra.MontoOriginal</td>
+                <td>@Obra.PlazoOriginal</td>
+                <td>@Html.ActionLink("Ver", "details", "obra", new { id = Obra.IdObra }, new { @class = "btn btn-info"})</td>
+                <td>@Html.ActionLink("Editar","edit","obra", new { id = Obra.IdObra }, new { @class = "btn btn-primary"})</td>
+                <td>@Html.ActionLink("Eliminar", "index", "home", null, new { @class = "btn btn-danger" })</td>
+            </tr>
+        }
 
+    </tbody>
+</table>

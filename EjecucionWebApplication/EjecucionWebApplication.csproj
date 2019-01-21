@@ -196,6 +196,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AvanceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ObraController.cs" />
@@ -203,11 +204,28 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Avance.cs" />
+    <Compile Include="Models\Certificado.cs" />
+    <Compile Include="Models\DptoProvincia.cs" />
+    <Compile Include="Models\EmpresaConstructora.cs" />
+    <Compile Include="Models\EstadoObra.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Obra.cs" />
+    <Compile Include="Models\Persona.cs" />
+    <Compile Include="Models\Programa.cs" />
+    <Compile Include="Models\Prototipo.cs" />
+    <Compile Include="Models\RelacionObraPrototipo.cs" />
+    <Compile Include="Models\RelacionSeguimeintoPersona.cs" />
+    <Compile Include="Models\RelaObraCertificado.cs" />
+    <Compile Include="Models\RolSeguimeinto.cs" />
+    <Compile Include="Models\Seguimiento.cs" />
+    <Compile Include="Models\TipoCertificado.cs" />
+    <Compile Include="Models\TipoCertificadoCat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AvanceService.cs" />
     <Compile Include="Services\ObraService.cs" />
+    <Compile Include="Services\RelaObraPrototipoService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -269,7 +287,12 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Obra\Index.cshtml" />
-    <Content Include="Views\Home\Obra.cshtml" />
+    <Content Include="Views\Home\Avance.cshtml" />
+    <Content Include="Views\Avance\Index.cshtml" />
+    <Content Include="Views\Obra\Details.cshtml" />
+    <Content Include="Views\Obra\Create.cshtml" />
+    <Content Include="Views\Obra\Edit.cshtml" />
+    <Content Include="Views\Obra\DisplayTemplates\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -29,15 +29,18 @@ namespace EjecucionWebApplication.Services
                 PlazoOriginal = 600
             };
         }
-        public void agregarObra(Obra obra) {
+        public Boolean AgregarObra(Obra obra) {
+            return true;
         }
-        public void eliminarObra(int idObra)
+        public Boolean EliminarObra(int idObra)
         {
+            return true;
         }
-        public void actualizarObra(Obra obra)
+        public Boolean ActualizarObra(Obra obra)
         {
+            return true;
         }
-        public List<Obra> obtenerObras() {
+        public List<Obra> ListarObras() {
             var obra1 = new Obra
             {
                 IdObra = 1,
@@ -76,7 +79,26 @@ namespace EjecucionWebApplication.Services
                 MontoOriginal = 15600566,
                 PlazoOriginal = 365
             };
-            return new List<Obra> { obra1, obra2 };
+            var obra3 = new Obra
+            {
+                IdObra = 1,
+                ObraNombre = "Barrio Conjunto 1",
+                ACCU = "100",
+                CantParaSorteo = 100,
+                ExpMatriz = "501-643434",
+                FechaFinalizacion = new DateTime(),
+                FechaInicio = new DateTime(),
+                FechaOferta = new DateTime(),
+                IdDptoProvincia = 1,
+                IdEmpConstructora = 1,
+                IdPrograma = 1,
+                LicitacionResolucion = "dasdasdas",
+                MontoContratoPesos = 14343440,
+                MontoContratoUVI = 3000,
+                MontoOriginal = 15600566,
+                PlazoOriginal = 365
+            };
+            return new List<Obra> { obra1, obra2,obra3 };
         }
     }
 }

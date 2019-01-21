@@ -1,5 +1,4 @@
-﻿using EjecucionWebApplication.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,32 +6,27 @@ using System.Web.Mvc;
 
 namespace EjecucionWebApplication.Controllers
 {
-    public class ObraController : Controller
+    public class AvanceController : Controller
     {
-        // GET: Obra
+        // GET: Avance
         public ActionResult Index()
         {
-            ViewBag.Message = "Lista de obras en Ejecución.";
-            var obraService = new ObraService();
-            var model = obraService.ListarObras();
-            return View(model);
+            return View();
         }
 
-        // GET: Obra/Details/5
+        // GET: Avance/Details/5
         public ActionResult Details(int id)
         {
-            var obraService = new ObraService();
-            var model = obraService.ObtenerObra(1);
-            return View(model);
+            return View();
         }
 
-        // GET: Obra/Create
+        // GET: Avance/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Obra/Create
+        // POST: Avance/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -48,15 +42,13 @@ namespace EjecucionWebApplication.Controllers
             }
         }
 
-        // GET: Obra/Edit/5
+        // GET: Avance/Edit/5
         public ActionResult Edit(int id)
         {
-            var obraService = new ObraService();
-            var model = obraService.ObtenerObra(1);
-            return View(model);
+            return View();
         }
 
-        // POST: Obra/Edit/5
+        // POST: Avance/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -72,13 +64,13 @@ namespace EjecucionWebApplication.Controllers
             }
         }
 
-        // GET: Obra/Delete/5
+        // GET: Avance/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Obra/Delete/5
+        // POST: Avance/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

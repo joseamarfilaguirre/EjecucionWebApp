@@ -18,7 +18,7 @@ namespace EjecucionWebApplication.Controllers
         {
             ViewBag.Message = "Your application description page.";
             var obraService = new ObraService();
-            var model = obraService.obtenerObras();
+            var model = obraService.ListarObras();
             return View(model);
         }
 
@@ -28,12 +28,12 @@ namespace EjecucionWebApplication.Controllers
 
             return View();
         }
-        public ActionResult Obra()
+        public ActionResult Avance()
         {
-            ViewBag.Message = "Lista de obras.";
-            var obraService = new ObraService();
-            var model = obraService.obtenerObras();
-            return View(model);
+            ViewBag.Message = "Avances.";
+            //var obraService = new ObraService();
+            //var model = obraService.obtenerObras();
+            return View();
         }
     }
 }
