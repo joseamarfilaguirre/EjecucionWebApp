@@ -1,0 +1,57 @@
+﻿@model IEnumerable<WebAppEjecucion.Models.Avance>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Obra.Obra1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.porcentajePrevisto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.porcentajeReal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.porcentajeAtraso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaAvance)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Obra.Obra1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.porcentajePrevisto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.porcentajeReal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.porcentajeAtraso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaAvance)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdAvance }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdAvance }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdAvance })
+        </td>
+    </tr>
+}
+
+</table>

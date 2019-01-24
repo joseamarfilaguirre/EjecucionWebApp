@@ -1,0 +1,50 @@
+﻿@model WebAppEjecucion.Models.relaObraPrototipo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>relaObraPrototipo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Obra.expMatriz)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Obra.expMatriz)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prototipos.Prototipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prototipos.Prototipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CantidadParaSorteo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CantidadParaSorteo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdrelaObraPrototipo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

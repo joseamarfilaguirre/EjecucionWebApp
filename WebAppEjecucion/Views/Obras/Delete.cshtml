@@ -1,0 +1,138 @@
+﻿@model WebAppEjecucion.Models.Obra
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar</h2>
+
+<h3>¿Seguro que desea elimiar la obra del Sistema?</h3>
+<div>
+    <h4>Obra</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Nombre de Obra
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Obra1)
+        </dd>
+        <dt>
+            Departamento
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DptoProvincia.DptoProvincia1)
+        </dd>
+
+        <dt>
+            Empresa
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpresaConstructora.EmpresaConstructora1)
+        </dd>
+
+        <dt>
+            Programa
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Programa.Programa1)
+        </dd>
+
+        <dt>
+            Expediente Matriz
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.expMatriz)
+        </dd>
+
+        <dt>
+            ACCU
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ACCU)
+        </dd>
+
+        <dt>
+            Cantidad para Sorteo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantParaSorteo)
+        </dd>
+
+        <dt>
+            Monto Original
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.montoOriginal)
+        </dd>
+
+        <dt>
+            Licitacion/Resolución
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.licitacionResolucion)
+        </dd>
+
+        <dt>
+            Plazo Original
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.plazoOriginal)
+        </dd>
+        <dt>
+            Fecha de Inicio
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FechaInicio)
+        </dd>
+        <dt>
+            Fecha de Finalización
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaFinalizacion)
+        </dd>
+
+        <dt>
+            Monto de Contrato en Pesos
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MontoContratoPesos)
+        </dd>
+
+        <dt>
+            Monto de Contrato en UVI
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MontoContratoUVI)
+        </dd>
+
+        <dt>
+            Fecha de Oferta
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaOferta)
+        </dd>
+    </dl>
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("Atras", "Index", "Obras", null, new { @class = "btn btn-danger" }) |
+           <input type="submit" value="Eliminar" class="btn btn-default"/>
+        </div>
+    }
+</div>

@@ -1,0 +1,58 @@
+﻿@model WebAppEjecucion.Models.Avance
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Avance</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Obra.expMatriz)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Obra.expMatriz)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.porcentajePrevisto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.porcentajePrevisto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.porcentajeReal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.porcentajeReal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.porcentajeAtraso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.porcentajeAtraso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaAvance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaAvance)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdAvance }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,42 @@
+﻿@model WebAppEjecucion.Models.Entregas
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Entregas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Obra.expMatriz)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Obra.expMatriz)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaEntrega)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaEntrega)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CantEntregada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CantEntregada)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdEntrega }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
