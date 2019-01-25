@@ -4,27 +4,27 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Avances de Obra</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Agregar Avance", "Create", new { id = ViewBag.idobra }, new { @class = "btn btn-success" })
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Obra.Obra1)
+           Obra
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.porcentajePrevisto)
+            Porcentaje Previsto
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.porcentajeReal)
+            Porcentaje Real
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.porcentajeAtraso)
+            Porcentaje de Atraso
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FechaAvance)
+            Fecha de Avance
         </th>
         <th></th>
     </tr>
@@ -35,23 +35,25 @@
             @Html.DisplayFor(modelItem => item.Obra.Obra1)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.porcentajePrevisto)
+            @Html.DisplayFor(modelItem => item.porcentajePrevisto)%
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.porcentajeReal)
+            @Html.DisplayFor(modelItem => item.porcentajeReal)%
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.porcentajeAtraso)
+            @Html.DisplayFor(modelItem => item.porcentajeAtraso)%
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.FechaAvance)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdAvance }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdAvance }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdAvance })
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdAvance }) |
+            @Html.ActionLink("Ver Detalles", "Details", new { id=item.IdAvance }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.IdAvance })
         </td>
     </tr>
 }
-
 </table>
+<p>
+    @Html.ActionLink("Atras", "Details", "Obras", new { id = ViewBag.idobra } , new { @class = "btn btn-danger" })
+</p>

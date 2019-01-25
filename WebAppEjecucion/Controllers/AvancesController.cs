@@ -14,18 +14,23 @@ namespace WebAppEjecucion.Controllers
     {
         private ConexionEjecucionDB db = new ConexionEjecucionDB();
 
-        // GET: Avances
+         //GET: Avances
         //public ActionResult Index()
         //{
         //    ///Aca filtrar por IdObra
         //    var avance = db.Avance.Include(a => a.Obra);
         //    return View(avance.ToList());
         //}
-        public ActionResult Index(int IdObra)
+        public ActionResult Index(int? id)
         {
             ///Aca filtrar por IdObra
             ///Hacer procedimiento que busque por IdObra
-            var avance = db.Avance.Include(a => a.Obra);
+            //var avance = db.Avance.Include(a => a.Obra);
+            var avance = db.Avance.Where(x => x.IdObra.Value  == id).Include(a =>a.Obra);
+            //    var filteredData = db.Products.Local
+            //.Where(x => x.Name.Contains(this.FilterTextBox.Text));
+            //    this.productBindingSource.DataSource = filteredData;
+            ViewBag.idobra = id; 
             return View(avance.ToList());
         }
 
@@ -45,9 +50,10 @@ namespace WebAppEjecucion.Controllers
         }
 
         // GET: Avances/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
-            ViewBag.IdObra = new SelectList(db.Obra, "IdObra", "Obra1");
+            ViewBag.IdObra = new SelectList(db.Obra.Where(x=>x.IdObra==id), "IdObra", "Obra1");
+            ViewBag.id = id;
             return View();
         }
 
@@ -58,13 +64,14 @@ namespace WebAppEjecucion.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IdAvance,porcentajePrevisto,porcentajeReal,porcentajeAtraso,IdObra,FechaAvance")] Avance avance)
         {
+            ViewBag.id = avance.IdObra;
             if (ModelState.IsValid)
             {
                 db.Avance.Add(avance);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index",new {id=avance.IdObra });
             }
-
+            
             ViewBag.IdObra = new SelectList(db.Obra, "IdObra", "Obra1", avance.IdObra);
             return View(avance);
         }

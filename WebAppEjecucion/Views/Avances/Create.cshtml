@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Crear Avance</h2>
 
 
 @using (Html.BeginForm()) 
@@ -64,7 +64,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Atras", "Index", "Avances", new { id = ViewBag.id }, new { @class = "btn btn-danger" })
 </div>
 
 @section Scripts {

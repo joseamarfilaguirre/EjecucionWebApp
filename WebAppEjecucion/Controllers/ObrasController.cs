@@ -56,7 +56,7 @@ namespace WebAppEjecucion.Controllers
             {
                 db.Obra.Add(obra);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index",new {id = obra.IdObra});
             }
 
             ViewBag.IdDptoProvincia = new SelectList(db.DptoProvincia, "IdDptoProvincia", "DptoProvincia1", obra.IdDptoProvincia);
