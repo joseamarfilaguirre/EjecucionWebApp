@@ -15,9 +15,10 @@ namespace WebAppEjecucion.Controllers
         private ConexionEjecucionDB db = new ConexionEjecucionDB();
 
         // GET: Entregas
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            var entregas = db.Entregas.Include(e => e.Obra);
+            var entregas = db.Entregas.Where(x => x.IdObra == id).Include(e => e.Obra);
+            ViewBag.idobra = id;
             return View(entregas.ToList());
         }
 
@@ -37,9 +38,10 @@ namespace WebAppEjecucion.Controllers
         }
 
         // GET: Entregas/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
-            ViewBag.IdObra = new SelectList(db.Obra, "IdObra", "Obra1");
+            ViewBag.id = id;
+            ViewBag.IdObra = new SelectList(db.Obra.Where(x => x.IdObra == id), "IdObra", "Obra1");
             return View();
         }
 
@@ -54,10 +56,10 @@ namespace WebAppEjecucion.Controllers
             {
                 db.Entregas.Add(entregas);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = entregas.IdObra });
             }
-
-            ViewBag.IdObra = new SelectList(db.Obra, "IdObra", "Obra1", entregas.IdObra);
+            ViewBag.id = entregas.IdObra;
+            ViewBag.IdObra = new SelectList(db.Obra.Where(x => x.IdObra == entregas.IdObra), "IdObra", "Obra1");
             return View(entregas);
         }
 
@@ -73,7 +75,7 @@ namespace WebAppEjecucion.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdObra = new SelectList(db.Obra, "IdObra", "Obra1", entregas.IdObra);
+            ViewBag.IdObra = new SelectList(db.Obra.Where(x => x.IdObra == entregas.IdObra), "IdObra", "Obra1");
             return View(entregas);
         }
 
@@ -88,9 +90,9 @@ namespace WebAppEjecucion.Controllers
             {
                 db.Entry(entregas).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = entregas.IdObra });
             }
-            ViewBag.IdObra = new SelectList(db.Obra, "IdObra", "Obra1", entregas.IdObra);
+            ViewBag.IdObra = new SelectList(db.Obra.Where(x => x.IdObra == entregas.IdObra), "IdObra", "Obra1");
             return View(entregas);
         }
 
@@ -115,9 +117,10 @@ namespace WebAppEjecucion.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Entregas entregas = db.Entregas.Find(id);
+            int? idrela = entregas.IdObra;
             db.Entregas.Remove(entregas);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { id = idrela });
         }
 
         protected override void Dispose(bool disposing)

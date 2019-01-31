@@ -1,0 +1,47 @@
+﻿@model WebAppEjecucion.Models.relaSeguimientoPersona
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar</h2>
+
+<h3>¿Seguro que desea eliminar los datos del este Rol?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Personas.ApellidoNombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Personas.ApellidoNombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rolSeguimiento.RolSeguimiento1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rolSeguimiento.RolSeguimiento1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Seguimiento.FechaSeguimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Seguimiento.FechaSeguimiento)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Atras", "Index", new { id = Model.IdSeguimiento }, new { @class = "btn btn-danger" })
+        </div>
+    }
+</div>

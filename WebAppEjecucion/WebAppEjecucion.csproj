@@ -200,10 +200,14 @@
     <Compile Include="Controllers\AvancesController.cs" />
     <Compile Include="Controllers\EmpresaConstructorasController.cs" />
     <Compile Include="Controllers\EntregasController.cs" />
+    <Compile Include="Controllers\EstadoObrasController.cs" />
     <Compile Include="Controllers\ObrasController.cs" />
+    <Compile Include="Controllers\PersonasController.cs" />
     <Compile Include="Controllers\ProgramasController.cs" />
     <Compile Include="Controllers\PrototiposController.cs" />
     <Compile Include="Controllers\relaObraPrototipoesController.cs" />
+    <Compile Include="Controllers\relaSeguimientoPersonasController.cs" />
+    <Compile Include="Controllers\SeguimientoController.cs" />
     <Compile Include="Models\Avance.cs" />
     <Compile Include="Models\CertificadoObra.cs" />
     <Compile Include="Models\CertificadoPago.cs" />
@@ -344,6 +348,26 @@
     <Content Include="Views\relaObraPrototipoes\Edit.cshtml" />
     <Content Include="Views\relaObraPrototipoes\Index.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Seguimiento\Create.cshtml" />
+    <Content Include="Views\Seguimiento\Delete.cshtml" />
+    <Content Include="Views\Seguimiento\Details.cshtml" />
+    <Content Include="Views\Seguimiento\Edit.cshtml" />
+    <Content Include="Views\Seguimiento\Index.cshtml" />
+    <Content Include="Views\Personas\Create.cshtml" />
+    <Content Include="Views\Personas\Delete.cshtml" />
+    <Content Include="Views\Personas\Details.cshtml" />
+    <Content Include="Views\Personas\Edit.cshtml" />
+    <Content Include="Views\Personas\Index.cshtml" />
+    <Content Include="Views\EstadoObras\Create.cshtml" />
+    <Content Include="Views\EstadoObras\Delete.cshtml" />
+    <Content Include="Views\EstadoObras\Details.cshtml" />
+    <Content Include="Views\EstadoObras\Edit.cshtml" />
+    <Content Include="Views\EstadoObras\Index.cshtml" />
+    <Content Include="Views\relaSeguimientoPersonas\Create.cshtml" />
+    <Content Include="Views\relaSeguimientoPersonas\Delete.cshtml" />
+    <Content Include="Views\relaSeguimientoPersonas\Details.cshtml" />
+    <Content Include="Views\relaSeguimientoPersonas\Edit.cshtml" />
+    <Content Include="Views\relaSeguimientoPersonas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

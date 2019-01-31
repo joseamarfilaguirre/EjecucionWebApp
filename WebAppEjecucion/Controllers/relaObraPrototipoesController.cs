@@ -15,9 +15,10 @@ namespace WebAppEjecucion.Controllers
         private ConexionEjecucionDB db = new ConexionEjecucionDB();
 
         // GET: relaObraPrototipoes
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            var relaObraPrototipo = db.relaObraPrototipo.Include(r => r.Obra).Include(r => r.Prototipos);
+            var relaObraPrototipo = db.relaObraPrototipo.Where(x => x.IdObra == id).Include(r => r.Obra).Include(r => r.Prototipos);
+            ViewBag.idobra = id;
             return View(relaObraPrototipo.ToList());
         }
 
@@ -37,10 +38,11 @@ namespace WebAppEjecucion.Controllers
         }
 
         // GET: relaObraPrototipoes/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
-            ViewBag.IdObra = new SelectList(db.Obra, "IdObra", "Obra1");
+            ViewBag.IdObra = new SelectList(db.Obra.Where(x => x.IdObra == id), "IdObra", "Obra1");
             ViewBag.IdPrototipo = new SelectList(db.Prototipos, "IdPrototipo", "Prototipo");
+            ViewBag.id = id;
             return View();
         }
 
@@ -55,10 +57,10 @@ namespace WebAppEjecucion.Controllers
             {
                 db.relaObraPrototipo.Add(relaObraPrototipo);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = relaObraPrototipo.IdObra });
             }
 
-            ViewBag.IdObra = new SelectList(db.Obra, "IdObra", "Obra1", relaObraPrototipo.IdObra);
+            ViewBag.IdObra = new SelectList(db.Obra.Where(x => x.IdObra == relaObraPrototipo.IdObra), "IdObra", "Obra1");
             ViewBag.IdPrototipo = new SelectList(db.Prototipos, "IdPrototipo", "Prototipo", relaObraPrototipo.IdPrototipo);
             return View(relaObraPrototipo);
         }
@@ -75,7 +77,7 @@ namespace WebAppEjecucion.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdObra = new SelectList(db.Obra, "IdObra", "Obra1", relaObraPrototipo.IdObra);
+            ViewBag.IdObra = new SelectList(db.Obra.Where(x => x.IdObra == relaObraPrototipo.IdObra), "IdObra", "Obra1");
             ViewBag.IdPrototipo = new SelectList(db.Prototipos, "IdPrototipo", "Prototipo", relaObraPrototipo.IdPrototipo);
             return View(relaObraPrototipo);
         }
@@ -91,9 +93,9 @@ namespace WebAppEjecucion.Controllers
             {
                 db.Entry(relaObraPrototipo).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = relaObraPrototipo.IdObra });
             }
-            ViewBag.IdObra = new SelectList(db.Obra, "IdObra", "Obra1", relaObraPrototipo.IdObra);
+            ViewBag.IdObra = new SelectList(db.Obra.Where(x => x.IdObra == relaObraPrototipo.IdObra), "IdObra", "Obra1");
             ViewBag.IdPrototipo = new SelectList(db.Prototipos, "IdPrototipo", "Prototipo", relaObraPrototipo.IdPrototipo);
             return View(relaObraPrototipo);
         }
@@ -119,9 +121,11 @@ namespace WebAppEjecucion.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             relaObraPrototipo relaObraPrototipo = db.relaObraPrototipo.Find(id);
+            int? idrela = relaObraPrototipo.IdObra;
             db.relaObraPrototipo.Remove(relaObraPrototipo);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            ///return RedirectToAction("Index");
+            return RedirectToAction("Index", new { id = idrela });
         }
 
         protected override void Dispose(bool disposing)

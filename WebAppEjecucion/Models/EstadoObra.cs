@@ -14,7 +14,8 @@ namespace WebAppEjecucion.Models
 
         [Column("EstadoObra")]
         [Required]
-        [StringLength(50)]
+        [StringLength(50,ErrorMessage = "El campo Estado de Obra debe tener una longitud máxima de 50")]
+        [Display(Name = "Estado de Obra")]
         public string EstadoObra1 { get; set; }
     }
 }

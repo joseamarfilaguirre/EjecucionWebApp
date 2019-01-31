@@ -11,7 +11,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Obra.expMatriz)
+            Obra
         </dt>
 
         <dd>
@@ -19,7 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Prototipos.Prototipo)
+           Prototipo
         </dt>
 
         <dd>
@@ -27,7 +27,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Cantidad)
+            Cantidad
         </dt>
 
         <dd>
@@ -35,7 +35,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CantidadParaSorteo)
+           Cantidad para sorteo
         </dt>
 
         <dd>
@@ -45,6 +45,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdrelaObraPrototipo }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Atras", "Index", null, new { id = Model.IdObra }, new { @class = "btn btn-danger" }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdrelaObraPrototipo })
 </p>

@@ -21,7 +21,7 @@ namespace WebAppEjecucion.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("ConexionEjecucionDB", throwIfV1Schema: false)
         {
         }
 

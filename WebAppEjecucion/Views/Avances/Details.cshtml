@@ -1,17 +1,17 @@
 ﻿@model WebAppEjecucion.Models.Avance
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalles";
 }
 
-<h2>Details</h2>
+<h2>Detalles de Avance de Obra</h2>
 
 <div>
     <h4>Avance</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Obra.expMatriz)
+            Expediente Matriz
         </dt>
 
         <dd>
@@ -19,7 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.porcentajePrevisto)
+            Porcentaje Previsto
         </dt>
 
         <dd>
@@ -27,7 +27,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.porcentajeReal)
+            Porcentaje Real 
         </dt>
 
         <dd>
@@ -35,7 +35,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.porcentajeAtraso)
+            Porcentaje Atraso
         </dt>
 
         <dd>
@@ -43,7 +43,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FechaAvance)
+            Fecha de Avance
         </dt>
 
         <dd>
@@ -53,6 +53,8 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdAvance }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Atras", "Index", "Avances", new { id = Model.IdObra }, new { @class = "btn btn-danger" }) |
+    @Html.ActionLink("Editar", "Edit", new { id = Model.IdAvance }, new { @class = "btn btn-primary"})
+ 
+
 </p>

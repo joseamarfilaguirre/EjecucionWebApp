@@ -1,0 +1,41 @@
+﻿@model WebAppEjecucion.Models.relaSeguimientoPersona
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles de Rol</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Personas.ApellidoNombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Personas.ApellidoNombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rolSeguimiento.RolSeguimiento1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rolSeguimiento.RolSeguimiento1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Seguimiento.FechaSeguimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Seguimiento.FechaSeguimiento)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.IdRelaseguimientoPersona }) |
+    @Html.ActionLink("Atras", "Index", new { id = Model.IdSeguimiento }, new { @class = "btn btn-danger" })
+</p>

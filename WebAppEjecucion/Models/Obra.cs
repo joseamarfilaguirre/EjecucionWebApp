@@ -27,41 +27,55 @@ namespace WebAppEjecucion.Models
         public int IdObra { get; set; }
 
         [StringLength(50)]
+        [Display(Name ="Expediente Matriz")]
         public string expMatriz { get; set; }
 
+        [Display(Name = "Nombre de Obra")]
         [Column("Obra")]
-        [Required]
-        [StringLength(100)]
+        [Required(ErrorMessage = "El campo Nombre de Obra es Obligatorio")]
+        [StringLength(100, ErrorMessage = "El campo Nombre de Obra debe tener una longitud máxima de 100")]
         public string Obra1 { get; set; }
 
-        [StringLength(50)]
+        [Display(Name = "ACCU")]
+        [StringLength(50,ErrorMessage = "El campo ACCU debe tener una longitud máxima de 50")]
         public string ACCU { get; set; }
 
+        [Display(Name = "Departamento")]
         public int? IdDptoProvincia { get; set; }
 
+        [Display(Name = "Programa")]
         public int? IdPrograma { get; set; }
 
+        [Display(Name = "Empresa Constructora")]
         public int? IdEmpConstructora { get; set; }
 
+        [Display(Name = "Cantidad Para Sorteo")]
         public int? cantParaSorteo { get; set; }
 
+        [Display(Name = "Monto Original")]
         public double? montoOriginal { get; set; }
 
-        [StringLength(50)]
+        [Display(Name = "Licitacion/Resolucion")]
+        [StringLength(50,ErrorMessage = "El campo Licitacion/Resolucion debe tener una longitud máxima de 50")]
         public string licitacionResolucion { get; set; }
-
+        [Display(Name = "Plazo Original en dias")]
         public int? plazoOriginal { get; set; }
 
+        [Display(Name = "Fecha de Finalizacion")]
         [Column(TypeName = "date")]
         public DateTime? fechaFinalizacion { get; set; }
 
+        [Display(Name = "Monto de Contrato en Pesos")]
         public double? MontoContratoPesos { get; set; }
 
+        [Display(Name = "Monto de Contrato en UVIS")]
         public double? MontoContratoUVI { get; set; }
 
+        [Display(Name = "Fecha de Oferta")]
         [Column(TypeName = "date")]
         public DateTime? FechaOferta { get; set; }
 
+        [Display(Name = "Fecha de Inicio")]
         [Column(TypeName = "date")]
         public DateTime? FechaInicio { get; set; }
 

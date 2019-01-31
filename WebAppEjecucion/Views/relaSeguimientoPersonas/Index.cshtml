@@ -1,0 +1,48 @@
+﻿@model IEnumerable<WebAppEjecucion.Models.relaSeguimientoPersona>
+
+@{
+    ViewBag.Title = "Roles";
+}
+
+<h2>Roles</h2>
+
+<p>
+    @Html.ActionLink("Asignar Nuevo Rol", "Create",null, new { id = ViewBag.idSeguimiento }, new { @class = "btn btn-success"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Personas.ApellidoNombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rolSeguimiento.RolSeguimiento1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Seguimiento.FechaSeguimiento)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Personas.ApellidoNombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rolSeguimiento.RolSeguimiento1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Seguimiento.FechaSeguimiento)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdRelaseguimientoPersona }) |
+            @Html.ActionLink("Ver Detalles", "Details", new { id=item.IdRelaseguimientoPersona }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.IdRelaseguimientoPersona })
+        </td>
+    </tr>
+}
+
+</table>
+<p>
+    @Html.ActionLink("Atras", "Details", "Seguimiento", new { id = ViewBag.idSeguimiento }, new { @class = "btn btn-danger" })
+</p>

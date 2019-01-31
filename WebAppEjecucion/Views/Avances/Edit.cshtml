@@ -1,10 +1,10 @@
 ﻿@model WebAppEjecucion.Models.Avance
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Editar";
 }
 
-<h2>Edit</h2>
+<h2>Editar Avance</h2>
 
 
 @using (Html.BeginForm())
@@ -12,13 +12,12 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Avance</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.IdAvance)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.porcentajePrevisto, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.porcentajePrevisto,"Porcentaje Previsto",htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.porcentajePrevisto, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.porcentajePrevisto, "", new { @class = "text-danger" })
@@ -26,7 +25,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.porcentajeReal, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.porcentajeReal,"Porcentaje Real", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.porcentajeReal, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.porcentajeReal, "", new { @class = "text-danger" })
@@ -34,7 +33,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.porcentajeAtraso, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.porcentajeAtraso, "Porcentaje Atraso",htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.porcentajeAtraso, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.porcentajeAtraso, "", new { @class = "text-danger" })
@@ -42,7 +41,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IdObra, "IdObra", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IdObra, "Obra", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("IdObra", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IdObra, "", new { @class = "text-danger" })
@@ -50,7 +49,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FechaAvance, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.FechaAvance,"Fecha de avance",htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.FechaAvance, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.FechaAvance, "", new { @class = "text-danger" })
@@ -59,14 +58,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Guardar" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Atras", "Index", "Avances", new { id = Model.IdObra }, new { @class = "btn btn-danger" })
 </div>
 
 @section Scripts {

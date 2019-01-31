@@ -71,8 +71,8 @@ namespace WebAppEjecucion.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index",new {id=avance.IdObra });
             }
-            
-            ViewBag.IdObra = new SelectList(db.Obra, "IdObra", "Obra1", avance.IdObra);
+
+            ViewBag.IdObra = new SelectList(db.Obra.Where(x => x.IdObra == avance.IdObra), "IdObra", "Obra1");
             return View(avance);
         }
 
@@ -88,7 +88,7 @@ namespace WebAppEjecucion.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdObra = new SelectList(db.Obra, "IdObra", "Obra1", avance.IdObra);
+            ViewBag.IdObra = new SelectList(db.Obra.Where(x => x.IdObra == id), "IdObra", "Obra1");
             return View(avance);
         }
 
@@ -103,9 +103,9 @@ namespace WebAppEjecucion.Controllers
             {
                 db.Entry(avance).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = avance.IdObra });
             }
-            ViewBag.IdObra = new SelectList(db.Obra, "IdObra", "Obra1", avance.IdObra);
+            ViewBag.IdObra = new SelectList(db.Obra.Where(x => x.IdObra == avance.IdObra), "IdObra", "Obra1");
             return View(avance);
         }
 
@@ -130,9 +130,10 @@ namespace WebAppEjecucion.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Avance avance = db.Avance.Find(id);
+            int? idrela = avance.IdObra;
             db.Avance.Remove(avance);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { id = idrela });
         }
 
         protected override void Dispose(bool disposing)

@@ -17,12 +17,14 @@ namespace WebAppEjecucion.Models
         [Key]
         public int IdPersona { get; set; }
 
+        [Display(Name ="Apellido y Nombre")]
         [Required]
-        [StringLength(100)]
+        [StringLength(100,ErrorMessage = "El campo {0} debe tener una longitud máxima de 100")]
         public string ApellidoNombre { get; set; }
 
+        [Display(Name = "Documento")]
         [Required]
-        [StringLength(50)]
+        [StringLength(50, ErrorMessage = "El campo {0} debe tener una longitud máxima de 50")]
         public string Documento { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,0 +1,40 @@
+﻿@model WebAppEjecucion.Models.Seguimiento
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles de Seguimiento</h2>
+@Html.ActionLink("Ver Roles", "Index", "Relaseguimientopersonas", new { id = Model.IdSeguimiento }, new { @class = "btn btn-success" })
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Obra
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Obra.Obra1)
+        </dd>
+
+        <dt>
+            Fecha de Seguimiento
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaSeguimiento)
+        </dd>
+
+        <dt>
+            Estado de Obra
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstadoObra.EstadoObra1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Atras", "Index", "Seguimiento", new { id = Model.IdObra }, new { @class = "btn btn-danger" }) |
+    @Html.ActionLink("Editar", "Edit", new { id = Model.IdSeguimiento }, new { @class = "btn btn-primary" })
+</p>

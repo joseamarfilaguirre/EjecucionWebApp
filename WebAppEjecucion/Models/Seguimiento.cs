@@ -19,13 +19,16 @@ namespace WebAppEjecucion.Models
         public int IdSeguimiento { get; set; }
 
         [Column(TypeName = "date")]
+        [Display(Name ="Fecha de Seguimiento")]
         public DateTime FechaSeguimiento { get; set; }
 
+        [Display(Name = "Obra")]
         public int IdObra { get; set; }
-
+        [Display(Name = "Estado de Obra")]
         public int IdEstadoObra { get; set; }
 
         public virtual Obra Obra { get; set; }
+        public virtual EstadoObra EstadoObra { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<relaSeguimientoPersona> relaSeguimientoPersona { get; set; }

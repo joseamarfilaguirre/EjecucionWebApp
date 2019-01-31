@@ -5,55 +5,63 @@
 }
 
 <h2>Avances de Obra</h2>
-
 <p>
     @Html.ActionLink("Agregar Avance", "Create", new { id = ViewBag.idobra }, new { @class = "btn btn-success" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-           Obra
-        </th>
-        <th>
-            Porcentaje Previsto
-        </th>
-        <th>
-            Porcentaje Real
-        </th>
-        <th>
-            Porcentaje de Atraso
-        </th>
-        <th>
-            Fecha de Avance
-        </th>
-        <th></th>
-    </tr>
+@if (Model.Count() != 0)
+{
+    <table class="table">
+        <tr>
+            <th>
+                Obra
+            </th>
+            <th>
+                Porcentaje Previsto
+            </th>
+            <th>
+                Porcentaje Real
+            </th>
+            <th>
+                Porcentaje de Atraso
+            </th>
+            <th>
+                Fecha de Avance
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Obra.Obra1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.porcentajePrevisto)%
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.porcentajeReal)%
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.porcentajeAtraso)%
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaAvance)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.IdAvance }) |
-            @Html.ActionLink("Ver Detalles", "Details", new { id=item.IdAvance }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.IdAvance })
-        </td>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Obra.Obra1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.porcentajePrevisto)%
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.porcentajeReal)%
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.porcentajeAtraso)%
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaAvance)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IdAvance }) |
+                    @Html.ActionLink("Ver Detalles", "Details", new { id = item.IdAvance }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.IdAvance })
+                </td>
+            </tr>
+        }
+    </table>
 }
-</table>
+else
+{
+    <p>La Obra no tiene Avances cargados</p>
+}
+
 <p>
     @Html.ActionLink("Atras", "Details", "Obras", new { id = ViewBag.idobra } , new { @class = "btn btn-danger" })
 </p>

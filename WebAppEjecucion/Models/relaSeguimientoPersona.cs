@@ -12,10 +12,11 @@ namespace WebAppEjecucion.Models
         [Key]
         public int IdRelaseguimientoPersona { get; set; }
 
+        [Display(Name = "Rol Seguimiento")]
         public int IdRolSeguimiento { get; set; }
-
+        [Display(Name = "Seguimiento")]
         public int IdSeguimiento { get; set; }
-
+        [Display(Name = "Persona")]
         public int IdPersona { get; set; }
 
         public virtual Personas Personas { get; set; }
