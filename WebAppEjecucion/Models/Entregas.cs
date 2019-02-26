@@ -12,12 +12,14 @@ namespace WebAppEjecucion.Models
         public int IdEntrega { get; set; }
 
         [Column(TypeName = "date")]
+        [Display(Name = "Fecha de Entrega")]
         public DateTime FechaEntrega { get; set; }
 
+        [Display(Name = "Cantidad")]
         public int CantEntregada { get; set; }
 
-        public int IdObra { get; set; }
+        public int IdrelaObraPrototipo { get; set; }
 
-        public virtual Obra Obra { get; set; }
+        public virtual relaObraPrototipo relaObraPrototipo { get; set; }
     }
 }

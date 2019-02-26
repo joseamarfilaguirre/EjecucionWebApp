@@ -16,11 +16,13 @@ namespace WebAppEjecucion.Models
         [Column(TypeName = "date")]
         public DateTime FechaPresentacion { get; set; }
 
-        public int IdCertificado { get; set; }
-
         public int IdObra { get; set; }
 
-        public virtual Certificados Certificados { get; set; }
+        [StringLength(50)]
+        public string Certificado { get; set; }
+
+        public int idTipoCertificado { get; set; }
+        public virtual TipoCertificado TipoCertificado { get; set; }
 
         public virtual Obra Obra { get; set; }
     }

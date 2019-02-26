@@ -13,7 +13,7 @@ namespace WebAppEjecucion.Controllers
     public class PersonasController : Controller
     {
         private ConexionEjecucionDB db = new ConexionEjecucionDB();
-
+        private static int IdSeguimiento;
         // GET: Personas
         public ActionResult Index()
         {
@@ -36,8 +36,9 @@ namespace WebAppEjecucion.Controllers
         }
 
         // GET: Personas/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
+            IdSeguimiento = (int)id;
             return View();
         }
 
@@ -52,7 +53,7 @@ namespace WebAppEjecucion.Controllers
             {
                 db.Personas.Add(personas);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create","Relaseguimientopersonas",new {id = IdSeguimiento} );
             }
 
             return View(personas);

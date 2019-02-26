@@ -1,0 +1,51 @@
+﻿@model IEnumerable<WebAppEjecucion.Models.relaObraCertificado>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Obra.expMatriz)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoCertificado.TipoCertificado1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaPresentacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Certificado)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Obra.expMatriz)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoCertificado.TipoCertificado1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaPresentacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Certificado)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdrelaObraCertificado }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdrelaObraCertificado }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdrelaObraCertificado })
+        </td>
+    </tr>
+}
+
+</table>

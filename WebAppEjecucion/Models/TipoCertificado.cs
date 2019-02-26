@@ -12,7 +12,7 @@ namespace WebAppEjecucion.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TipoCertificado()
         {
-            Certificados = new HashSet<Certificados>();
+            relaObraCertificado = new HashSet<relaObraCertificado>();
         }
 
         [Key]
@@ -26,7 +26,7 @@ namespace WebAppEjecucion.Models
         public int idTipoCertificadoCat { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Certificados> Certificados { get; set; }
+        public virtual ICollection<relaObraCertificado> relaObraCertificado { get; set; }
 
         public virtual TipoCertificadoCat TipoCertificadoCat { get; set; }
     }

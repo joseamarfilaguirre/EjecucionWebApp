@@ -1,0 +1,50 @@
+﻿@model WebAppEjecucion.Models.relaObraCertificado
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>relaObraCertificado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Obra.expMatriz)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Obra.expMatriz)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoCertificado.TipoCertificado1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoCertificado.TipoCertificado1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaPresentacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaPresentacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Certificado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Certificado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdrelaObraCertificado }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
