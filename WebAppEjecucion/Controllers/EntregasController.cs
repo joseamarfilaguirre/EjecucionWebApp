@@ -15,10 +15,9 @@ namespace WebAppEjecucion.Controllers
         private ConexionEjecucionDB db = new ConexionEjecucionDB();
 
         // GET: Entregas
-        public ActionResult Index(int? id)
+        public ActionResult Index()
         {
-            var entregas = db.Entregas.Where(x => x.IdObra == id).Include(e => e.Obra);
-            ViewBag.idobra = id;
+            var entregas = db.Entregas.Include(e => e.relaObraPrototipo);
             return View(entregas.ToList());
         }
 
@@ -38,10 +37,9 @@ namespace WebAppEjecucion.Controllers
         }
 
         // GET: Entregas/Create
-        public ActionResult Create(int? id)
+        public ActionResult Create()
         {
-            ViewBag.id = id;
-            ViewBag.IdObra = new SelectList(db.Obra.Where(x => x.IdObra == id), "IdObra", "Obra1");
+            ViewBag.IdrelaObraPrototipo = new SelectList(db.relaObraPrototipo, "IdrelaObraPrototipo", "IdrelaObraPrototipo");
             return View();
         }
 
@@ -50,16 +48,16 @@ namespace WebAppEjecucion.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdEntrega,FechaEntrega,CantEntregada,IdObra")] Entregas entregas)
+        public ActionResult Create([Bind(Include = "IdEntrega,FechaEntrega,CantEntregada,IdrelaObraPrototipo")] Entregas entregas)
         {
             if (ModelState.IsValid)
             {
                 db.Entregas.Add(entregas);
                 db.SaveChanges();
-                return RedirectToAction("Index", new { id = entregas.IdObra });
+                return RedirectToAction("Index");
             }
-            ViewBag.id = entregas.IdObra;
-            ViewBag.IdObra = new SelectList(db.Obra.Where(x => x.IdObra == entregas.IdObra), "IdObra", "Obra1");
+
+            ViewBag.IdrelaObraPrototipo = new SelectList(db.relaObraPrototipo, "IdrelaObraPrototipo", "IdrelaObraPrototipo", entregas.IdrelaObraPrototipo);
             return View(entregas);
         }
 
@@ -75,7 +73,7 @@ namespace WebAppEjecucion.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdObra = new SelectList(db.Obra.Where(x => x.IdObra == entregas.IdObra), "IdObra", "Obra1");
+            ViewBag.IdrelaObraPrototipo = new SelectList(db.relaObraPrototipo, "IdrelaObraPrototipo", "IdrelaObraPrototipo", entregas.IdrelaObraPrototipo);
             return View(entregas);
         }
 
@@ -84,15 +82,15 @@ namespace WebAppEjecucion.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdEntrega,FechaEntrega,CantEntregada,IdObra")] Entregas entregas)
+        public ActionResult Edit([Bind(Include = "IdEntrega,FechaEntrega,CantEntregada,IdrelaObraPrototipo")] Entregas entregas)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(entregas).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index", new { id = entregas.IdObra });
+                return RedirectToAction("Index");
             }
-            ViewBag.IdObra = new SelectList(db.Obra.Where(x => x.IdObra == entregas.IdObra), "IdObra", "Obra1");
+            ViewBag.IdrelaObraPrototipo = new SelectList(db.relaObraPrototipo, "IdrelaObraPrototipo", "IdrelaObraPrototipo", entregas.IdrelaObraPrototipo);
             return View(entregas);
         }
 
@@ -117,10 +115,9 @@ namespace WebAppEjecucion.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Entregas entregas = db.Entregas.Find(id);
-            int? idrela = entregas.IdObra;
             db.Entregas.Remove(entregas);
             db.SaveChanges();
-            return RedirectToAction("Index", new { id = idrela });
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

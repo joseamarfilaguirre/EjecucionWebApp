@@ -15,7 +15,7 @@ namespace WebAppEjecucion.Models
             Avance = new HashSet<Avance>();
             CertificadoObra = new HashSet<CertificadoObra>();
             CertificadoPago = new HashSet<CertificadoPago>();
-            Entregas = new HashSet<Entregas>();
+            //Entregas = new HashSet<Entregas>();
             relaObraAnticipoFinanciero = new HashSet<relaObraAnticipoFinanciero>();
             relaObraAportes = new HashSet<relaObraAportes>();
             relaObraCertificado = new HashSet<relaObraCertificado>();
@@ -93,7 +93,7 @@ namespace WebAppEjecucion.Models
         public virtual EmpresaConstructora EmpresaConstructora { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Entregas> Entregas { get; set; }
+        //public virtual ICollection<Entregas> Entregas { get; set; }
 
         public virtual Programa Programa { get; set; }
 

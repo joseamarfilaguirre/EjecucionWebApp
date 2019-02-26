@@ -16,7 +16,6 @@
         public virtual DbSet<CertificadoObra> CertificadoObra { get; set; }
         public virtual DbSet<CertificadoPago> CertificadoPago { get; set; }
         public virtual DbSet<CertificadoPagoDetalle> CertificadoPagoDetalle { get; set; }
-        public virtual DbSet<Certificados> Certificados { get; set; }
         public virtual DbSet<DptoProvincia> DptoProvincia { get; set; }
         public virtual DbSet<EmpresaConstructora> EmpresaConstructora { get; set; }
         public virtual DbSet<Entregas> Entregas { get; set; }
@@ -58,15 +57,6 @@
             modelBuilder.Entity<CertificadoPago>()
                 .HasMany(e => e.CertificadoPagoDetalle)
                 .WithRequired(e => e.CertificadoPago)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Certificados>()
-                .Property(e => e.Certificado)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Certificados>()
-                .HasMany(e => e.relaObraCertificado)
-                .WithRequired(e => e.Certificados)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<DptoProvincia>()
@@ -116,11 +106,6 @@
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Obra>()
-                .HasMany(e => e.Entregas)
-                .WithRequired(e => e.Obra)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Obra>()
                 .HasMany(e => e.relaObraAnticipoFinanciero)
                 .WithRequired(e => e.Obra)
                 .WillCascadeOnDelete(false);
@@ -134,6 +119,11 @@
                 .HasMany(e => e.relaObraCertificado)
                 .WithRequired(e => e.Obra)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<TipoCertificado>()
+             .HasMany(e => e.relaObraCertificado)
+             .WithRequired(e => e.TipoCertificado)
+             .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Obra>()
                 .HasMany(e => e.Seguimiento)
@@ -225,6 +215,15 @@
                 .HasMany(e => e.CertificadoPagoDetalle)
                 .WithRequired(e => e.TipoCertPagoRubro)
                 .HasForeignKey(e => e.IdRubro)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<relaObraPrototipo>()
+                .HasMany(e => e.Entregas)
+                .WithRequired(e => e.relaObraPrototipo)
+                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<TipoCertificado>()
+                .HasMany(e => e.relaObraCertificado)
+                .WithRequired(e => e.TipoCertificado)
                 .WillCascadeOnDelete(false);
         }
     }
