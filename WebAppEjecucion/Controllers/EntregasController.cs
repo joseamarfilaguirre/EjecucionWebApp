@@ -15,9 +15,10 @@ namespace WebAppEjecucion.Controllers
         private ConexionEjecucionDB db = new ConexionEjecucionDB();
 
         // GET: Entregas
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            var entregas = db.Entregas.Include(e => e.relaObraPrototipo);
+            ViewBag.idobra = id;
+            var entregas = db.Entregas.Include(e => e.relaObraPrototipo).Where( y => y.relaObraPrototipo.IdObra==id);
             return View(entregas.ToList());
         }
 
@@ -37,8 +38,10 @@ namespace WebAppEjecucion.Controllers
         }
 
         // GET: Entregas/Create
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
+       
+            ViewBag.id = id;
             ViewBag.IdrelaObraPrototipo = new SelectList(db.relaObraPrototipo, "IdrelaObraPrototipo", "IdrelaObraPrototipo");
             return View();
         }
