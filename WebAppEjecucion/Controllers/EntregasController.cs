@@ -42,7 +42,7 @@ namespace WebAppEjecucion.Controllers
         {
        
             ViewBag.id = id;
-            ViewBag.IdrelaObraPrototipo = new SelectList(db.relaObraPrototipo, "IdrelaObraPrototipo", "IdrelaObraPrototipo");
+            ViewBag.IdrelaObraPrototipo = new SelectList((db.relaObraPrototipo.Where(y => y.IdObra == id)).Include(x => x.Prototipos).Select(v => new { v.IdrelaObraPrototipo, v.Prototipos.Prototipo }), "IdrelaObraPrototipo", "Prototipo");
             return View();
         }
 
