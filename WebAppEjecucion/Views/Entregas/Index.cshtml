@@ -9,37 +9,50 @@
 <p>
     @Html.ActionLink("Agregar Entrega", "Create", new { id = ViewBag.idobra }, new { @class = "btn btn-success" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.relaObraPrototipo.Prototipos.Prototipo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaEntrega)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CantEntregada)
-        </th>
-        <th></th>
-    </tr>
+@if (Model.Count() != 0)
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.relaObraPrototipo.Prototipos.Prototipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaEntrega)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CantEntregada)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.relaObraPrototipo.Prototipos.Prototipo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaEntrega)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CantEntregada)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdEntrega }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdEntrega }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdEntrega })
-        </td>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.relaObraPrototipo.Prototipos.Prototipo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaEntrega)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CantEntregada)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IdEntrega }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.IdEntrega }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IdEntrega })
+                </td>
+            </tr>
+        }
+
+    </table>
+
 }
 
-</table>
+else
+{
+<p>La Obra no tiene Entregas</p>
+}
+<p>
+    @Html.ActionLink("Atras", "Details", "Obras", new { id = ViewBag.idobra }, new { @class = "btn btn-danger" })
+</p>

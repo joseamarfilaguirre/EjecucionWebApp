@@ -4,15 +4,15 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Certificados de Obra</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Agregar nuevo certificado", "Create", null, new { id = ViewBag.idObra }, new { @class = "btn btn-success" })
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Obra.expMatriz)
+            @Html.DisplayNameFor(model => model.Obra.Obra1)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TipoCertificado.TipoCertificado1)
@@ -29,7 +29,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Obra.expMatriz)
+            @Html.DisplayFor(modelItem => item.Obra.Obra1)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TipoCertificado.TipoCertificado1)
@@ -49,3 +49,6 @@
 }
 
 </table>
+<p>
+    @Html.ActionLink("Atras", "Details", "Obras", new { id = ViewBag.idObra }, new { @class = "btn btn-danger" })
+</p>

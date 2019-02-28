@@ -4,18 +4,18 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Detalles del Certificado</h2>
 
 <div>
     <h4>relaObraCertificado</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Obra.expMatriz)
+            @Html.DisplayNameFor(model => model.Obra.Obra1)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Obra.expMatriz)
+            @Html.DisplayFor(model => model.Obra.Obra1)
         </dd>
 
         <dt>
@@ -46,5 +46,5 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.IdrelaObraCertificado }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Atras", "Index", null, new { id = Model.IdObra }, new { @class = "btn btn-danger" })
 </p>

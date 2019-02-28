@@ -15,9 +15,10 @@ namespace WebAppEjecucion.Controllers
         private ConexionEjecucionDB db = new ConexionEjecucionDB();
 
         // GET: relaObraCertificadoes
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            var relaObraCertificado = db.relaObraCertificado.Include(r => r.Obra).Include(r => r.TipoCertificado);
+            ViewBag.idObra = id;
+            var relaObraCertificado = db.relaObraCertificado.Include(r => r.Obra).Include(r => r.TipoCertificado).Where(x=>x.IdObra==id);
             return View(relaObraCertificado.ToList());
         }
 
@@ -37,9 +38,10 @@ namespace WebAppEjecucion.Controllers
         }
 
         // GET: relaObraCertificadoes/Create
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
-            ViewBag.IdObra = new SelectList(db.Obra, "IdObra", "expMatriz");
+            ViewBag.id = id;
+            ViewBag.IdObra = new SelectList(db.Obra.Where(x=>x.IdObra==id), "IdObra", "Obra1");
             ViewBag.idTipoCertificado = new SelectList(db.TipoCertificado, "IdTipoCertificado", "TipoCertificado1");
             return View();
         }
@@ -55,10 +57,10 @@ namespace WebAppEjecucion.Controllers
             {
                 db.relaObraCertificado.Add(relaObraCertificado);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = relaObraCertificado.IdObra });
             }
 
-            ViewBag.IdObra = new SelectList(db.Obra, "IdObra", "expMatriz", relaObraCertificado.IdObra);
+            ViewBag.IdObra = new SelectList(db.Obra.Where(x=>x.IdObra==relaObraCertificado.IdObra), "IdObra", "Obra1", relaObraCertificado.IdObra);
             ViewBag.idTipoCertificado = new SelectList(db.TipoCertificado, "IdTipoCertificado", "TipoCertificado1", relaObraCertificado.idTipoCertificado);
             return View(relaObraCertificado);
         }
@@ -75,7 +77,7 @@ namespace WebAppEjecucion.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdObra = new SelectList(db.Obra, "IdObra", "expMatriz", relaObraCertificado.IdObra);
+            ViewBag.IdObra = new SelectList(db.Obra.Where(X=>X.IdObra==relaObraCertificado.IdObra), "IdObra", "Obra1", relaObraCertificado.IdObra);
             ViewBag.idTipoCertificado = new SelectList(db.TipoCertificado, "IdTipoCertificado", "TipoCertificado1", relaObraCertificado.idTipoCertificado);
             return View(relaObraCertificado);
         }
@@ -91,9 +93,9 @@ namespace WebAppEjecucion.Controllers
             {
                 db.Entry(relaObraCertificado).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = relaObraCertificado.IdObra });
             }
-            ViewBag.IdObra = new SelectList(db.Obra, "IdObra", "expMatriz", relaObraCertificado.IdObra);
+            ViewBag.IdObra = new SelectList(db.Obra.Where(x=>x.IdObra==relaObraCertificado.IdObra), "IdObra", "expMatriz", relaObraCertificado.IdObra);
             ViewBag.idTipoCertificado = new SelectList(db.TipoCertificado, "IdTipoCertificado", "TipoCertificado1", relaObraCertificado.idTipoCertificado);
             return View(relaObraCertificado);
         }
@@ -119,9 +121,10 @@ namespace WebAppEjecucion.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             relaObraCertificado relaObraCertificado = db.relaObraCertificado.Find(id);
+            int idObra = relaObraCertificado.IdObra;
             db.relaObraCertificado.Remove(relaObraCertificado);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { id = idObra });
         }
 
         protected override void Dispose(bool disposing)
