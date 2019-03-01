@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Prototipos de la Obra</h2>
 
 <p>
    @Html.ActionLink("Agregar nuevo items", "Create", null, new { id = ViewBag.idobra }, new { @class = "btn btn-success" })
@@ -44,9 +44,9 @@
                     @Html.DisplayFor(modelItem => item.CantidadParaSorteo)
                 </td>
                 <td>
-                    @Html.ActionLink("Editar", "Edit", new { id = item.IdrelaObraPrototipo }) |
-                    @Html.ActionLink("Ver detalles", "Details", new { id = item.IdrelaObraPrototipo }) |
-                    @Html.ActionLink("Eliminar", "Delete", new { id = item.IdrelaObraPrototipo })
+                    @Html.ActionLink("Ver Detalles", "Details", new { id = item.IdrelaObraPrototipo }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IdrelaObraPrototipo }, new { @class = "btn btn-warning" }) |                   
+                    @Html.ActionLink("Borrar", "Delete", new { id = item.IdrelaObraPrototipo }, new { @class = "btn btn-danger" })
                 </td>
             </tr>
         }

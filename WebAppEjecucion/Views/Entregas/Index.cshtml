@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Entregas</h2>
 
 <p>
     @Html.ActionLink("Agregar Entrega", "Create", new { id = ViewBag.idobra }, new { @class = "btn btn-success" })
@@ -35,9 +35,9 @@
             @Html.DisplayFor(modelItem => item.CantEntregada)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdEntrega }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdEntrega }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdEntrega })
+            @Html.ActionLink("Ver Detalles", "Details", new { id = item.IdEntrega }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdEntrega }, new { @class = "btn btn-warning" }) |           
+            @Html.ActionLink("Borrar", "Delete", new { id=item.IdEntrega }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

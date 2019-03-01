@@ -17,7 +17,7 @@ namespace WebAppEjecucion.Models
 
         [Key]
         public int IdEmpConstructora { get; set; }
-
+        [Display(Name ="Empresa Constructora")]
         [Column("EmpresaConstructora")]
         [Required]
         [StringLength(100)]

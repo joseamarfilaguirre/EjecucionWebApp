@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Obra Certificado</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Agregar Certificado", "Create")
 </p>
 <table class="table">
     <tr>
@@ -41,9 +41,9 @@
             @Html.DisplayFor(modelItem => item.Certificado)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdrelaObraCertificado }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdrelaObraCertificado }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdrelaObraCertificado })
+            @Html.ActionLink("Ver Detalles", "Details", new { id = item.IdrelaObraCertificado }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdrelaObraCertificado }, new { @class = "btn btn-warning" }) |            
+            @Html.ActionLink("Borrar", "Delete", new { id=item.IdrelaObraCertificado }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

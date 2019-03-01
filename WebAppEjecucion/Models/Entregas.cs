@@ -12,7 +12,7 @@ namespace WebAppEjecucion.Models
         public int IdEntrega { get; set; }
 
         [Column(TypeName = "date")]
-        [Display(Name = "Fecha de Entrega")]
+        [Display(Name = "Fecha Entrega")]
         public DateTime FechaEntrega { get; set; }
 
         [Display(Name = "Cantidad")]

@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Seguimeinto</h2>
+<h2>Seguimiento</h2>
 
 <p>
     @Html.ActionLink("Agregar Seguimiento", "Create", new { id = ViewBag.idobra }, new { @class = "btn btn-success" })
@@ -17,10 +17,10 @@
                 Obra
             </th>
             <th>
-                Fecha de Seguimiento
+                Fecha Seguimiento
             </th>
             <th>
-                Estado de Obra
+                Estado Obra
             </th>
             <th></th>
         </tr>
@@ -38,9 +38,9 @@
                     @Html.DisplayFor(modelItem => item.EstadoObra.EstadoObra1)
                 </td>
                 <td>
-                    @Html.ActionLink("Editar", "Edit", new { id = item.IdSeguimiento }) |
-                    @Html.ActionLink("Ver detalles", "Details", new { id = item.IdSeguimiento }) |
-                    @Html.ActionLink("Eliminar", "Delete", new { id = item.IdSeguimiento }) |
+                    @Html.ActionLink("Ver detalles", "Details", new { id = item.IdSeguimiento }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IdSeguimiento }, new { @class = "btn btn-warning" }) |                   
+                    @Html.ActionLink("Borrar", "Delete", new { id = item.IdSeguimiento }, new { @class = "btn btn-danger" }) |
                 </td>
             </tr>
         }

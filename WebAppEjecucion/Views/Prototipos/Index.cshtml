@@ -23,9 +23,9 @@
             @Html.DisplayFor(modelItem => item.Prototipo)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.IdPrototipo }) |
-            @Html.ActionLink("Ver Detalles", "Details", new { id=item.IdPrototipo }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.IdPrototipo })
+            @Html.ActionLink("Ver Detalles", "Details", new { id = item.IdPrototipo }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdPrototipo }, new { @class = "btn btn-warning" }) |            
+            @Html.ActionLink("Borrar", "Delete", new { id=item.IdPrototipo }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }
