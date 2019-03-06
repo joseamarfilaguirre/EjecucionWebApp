@@ -21,7 +21,7 @@ namespace WebAppEjecucion.Models
         public int? IdObra { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime? FechaAvance { get; set; }
+        public DateTime FechaAvance { get; set; }
 
         public virtual Obra Obra { get; set; }
     }

@@ -6,7 +6,23 @@
 
 <h2>Detalles de la Obra</h2>
 <div>
-    <h4>Obra</h4>
+    <div class="row">
+        <div class="col col-md-2">
+            <p>@Html.ActionLink("Avances", "Index", "Avances", new { id = Model.IdObra }, new { @class ="btn btn-info"})</p>
+        </div>
+        <div class="col col-md-2">
+            <p>@Html.ActionLink("Entregas", "Index", "Entregas", new { id = Model.IdObra }, new { @class ="btn btn-info"})</p>
+        </div>
+        <div class="col col-md-2">
+            <p>@Html.ActionLink("Prototipos de la obra", "Index", "RelaObraPrototipoes", new { id = Model.IdObra }, new { @class ="btn btn-info"})</p>
+        </div>
+        <div class="col col-md-2">
+            <p>@Html.ActionLink("Seguimiento de Obra", "Index", "Seguimiento", new { id = Model.IdObra }, new { @class ="btn btn-info"})</p>
+        </div>
+        <div class="col col-md-2">
+            <p>@Html.ActionLink("Certificados de Obra", "Index", "RelaObraCertificadoes", new { id = Model.IdObra }, new { @class ="btn btn-info"})</p>
+        </div>
+    </div>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -131,20 +147,3 @@
     @Html.ActionLink("Editar", "Edit", "Obras", new { id = Model.IdObra }, new { @class = "btn btn-primary" })
 </p>
 
-<div class="row">
-    <div class="col col-md-2">
-        <p>@Html.ActionLink("Avances", "Index", "Avances", new { id = Model.IdObra },null)</p>
-    </div>
-    <div class="col col-md-2">
-        <p>@Html.ActionLink("Entregas", "Index", "Entregas",new { id = Model.IdObra }, null)</p>
-    </div>
-    <div class="col col-md-2">
-        <p>@Html.ActionLink("Prototipos de la obra", "Index", "RelaObraPrototipoes", new { id = Model.IdObra }, null)</p>
-    </div>
-    <div class="col col-md-2">
-        <p>@Html.ActionLink("Seguimiento de Obra", "Index", "Seguimiento", new { id = Model.IdObra }, null)</p>
-    </div>
-     <div class="col col-md-2">
-        <p>@Html.ActionLink("Certificados de Obra", "Index", "RelaObraCertificadoes",  new { id = Model.IdObra},null)</p>
-    </div>
-</div>

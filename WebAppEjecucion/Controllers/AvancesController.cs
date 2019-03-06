@@ -14,7 +14,7 @@ namespace WebAppEjecucion.Controllers
     {
         private ConexionEjecucionDB db = new ConexionEjecucionDB();
 
-         //GET: Avances
+        //GET: Avances
         //public ActionResult Index()
         //{
         //    ///Aca filtrar por IdObra
@@ -26,10 +26,30 @@ namespace WebAppEjecucion.Controllers
             ///Aca filtrar por IdObra
             ///Hacer procedimiento que busque por IdObra
             //var avance = db.Avance.Include(a => a.Obra);
-            var avance = db.Avance.Where(x => x.IdObra.Value  == id).Include(a =>a.Obra);
+            var avance = db.Avance.Where(x => x.IdObra.Value == id).Include(a => a.Obra);
             //    var filteredData = db.Products.Local
             //.Where(x => x.Name.Contains(this.FilterTextBox.Text));
             //    this.productBindingSource.DataSource = filteredData;
+            DataTable datosgrafico = new DataTable();
+            datosgrafico.Columns.Add(new DataColumn("Fecha", typeof(string)));
+            datosgrafico.Columns.Add(new DataColumn("Porcentaje Real", typeof(string)));
+            datosgrafico.Columns.Add(new DataColumn("Porcentaje Presupuestado", typeof(string)));
+            foreach (Avance elemento in avance.ToList()) {
+                datosgrafico.Rows.Add(new Object[]
+              {
+                   elemento.FechaAvance.ToString("dd/MM/yyyy"),
+                   elemento.porcentajeReal.ToString(),
+                   elemento.porcentajePrevisto.ToString()
+              });
+            }
+            string stringDatos = "[["+ "`Fecha`," + "`Porcentaje Real`," + "`Porcentaje Presupuestado`]";
+            foreach (DataRow fila in datosgrafico.Rows) {
+                stringDatos = stringDatos + ",[";
+                stringDatos = stringDatos + "`" + fila[0] + "`" + "," + fila[1] + "," + fila[2];
+                stringDatos = stringDatos + "]";
+            }
+            stringDatos = stringDatos + "]";
+            ViewBag.datosCharts = stringDatos;
             ViewBag.idobra = id; 
             return View(avance.ToList());
         }
