@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebAppEjecucion.Models;
+using WebAppEjecucion.Models.Clases;
 
 namespace WebAppEjecucion.Controllers
 {
@@ -17,7 +18,18 @@ namespace WebAppEjecucion.Controllers
         // GET: Seguimiento
         public ActionResult Index(int? id)
         {
-            var seguimiento = db.Seguimiento.Where(x => x.IdObra == id).Include(s => s.Obra).Include(e=>e.EstadoObra);
+            //var seguimiento = db.Seguimiento.Where(x => x.IdObra == id).Include(s => s.Obra).Include(e => e.EstadoObra);
+            var seguimiento = db.Database.SqlQuery<RelacionSeguimientoPersona>
+                (@"SELECT resultado.Obra,resultado.FechaSeguimiento,resultado.EstadoObra,resultado.Inspector,resultado.IdSeguimiento
+FROM (SELECT  Obra.Obra, Seguimiento.FechaSeguimiento, EstadoObra.EstadoObra,iif(rolSeguimiento.IdRolSeguimiento=2,Null,Personas.ApellidoNombre) AS Inspector, Seguimiento.IdSeguimiento, rolSeguimiento.IdRolSeguimiento,relaSeguimientoPersona.IdRelaseguimientoPersona,ROW_NUMBER() OVER(PARTITION BY Seguimiento.IdSeguimiento ORDER BY Seguimiento.IdSeguimiento) as contador
+FROM            dbo.rolSeguimiento INNER JOIN
+                         (select top 1000000 * FROM relaSeguimientoPersona as r order by r.IdRolSeguimiento) as relaSeguimientoPersona
+						  ON dbo.rolSeguimiento.IdRolSeguimiento = relaSeguimientoPersona.IdRolSeguimiento INNER JOIN
+                         dbo.Personas ON relaSeguimientoPersona.IdPersona = dbo.Personas.IdPersona RIGHT OUTER JOIN
+                         dbo.Seguimiento INNER JOIN
+                         dbo.Obra ON dbo.Seguimiento.IdObra = dbo.Obra.IdObra INNER JOIN
+                         dbo.EstadoObra ON dbo.Seguimiento.IdEstadoObra = dbo.EstadoObra.IdEstadoObra ON relaSeguimientoPersona.IdSeguimiento = dbo.Seguimiento.IdSeguimiento 
+WHERE (dbo.Seguimiento.IdObra = "+id+")) AS resultado Where resultado.contador = 1");
             ViewBag.idobra = id;
             return View(seguimiento.ToList());
         }

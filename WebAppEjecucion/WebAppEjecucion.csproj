@@ -214,6 +214,7 @@
       <DependentUpon>201902261107306_migracion-entregas.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Clases\RelacionSeguimientoPersona.cs" />
     <Compile Include="Models\Entregas.cs" />
     <Compile Include="Models\Avance.cs" />
     <Compile Include="Models\CertificadoObra.cs" />

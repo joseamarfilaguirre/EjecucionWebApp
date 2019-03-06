@@ -60,7 +60,6 @@ namespace WebAppEjecucion.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index", new { id = relaSeguimientoPersona.IdSeguimiento });
             }
-
             ViewBag.IdPersona = new SelectList(db.Personas, "IdPersona", "ApellidoNombre");
             ViewBag.IdRolSeguimiento = new SelectList(db.rolSeguimiento, "IdRolSeguimiento", "RolSeguimiento1");
             ViewBag.IdSeguimiento = new SelectList(db.Seguimiento.Where(x => x.IdSeguimiento == relaSeguimientoPersona.IdSeguimiento), "IdSeguimiento", "FechaSeguimiento");
@@ -79,8 +78,8 @@ namespace WebAppEjecucion.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdPersona = new SelectList(db.Personas, "IdPersona", "ApellidoNombre");
-            ViewBag.IdRolSeguimiento = new SelectList(db.rolSeguimiento, "IdRolSeguimiento", "RolSeguimiento1");
+            ViewBag.IdPersona = new SelectList(db.Personas, "IdPersona", "ApellidoNombre",relaSeguimientoPersona.IdPersona);
+            ViewBag.IdRolSeguimiento = new SelectList(db.rolSeguimiento, "IdRolSeguimiento", "RolSeguimiento1",relaSeguimientoPersona.IdRolSeguimiento);
             ViewBag.IdSeguimiento = new SelectList(db.Seguimiento.Where(x => x.IdSeguimiento == relaSeguimientoPersona.IdSeguimiento), "IdSeguimiento", "FechaSeguimiento");
             return View(relaSeguimientoPersona);
         }

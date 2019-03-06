@@ -10,7 +10,7 @@ namespace WebAppEjecucion.Models
     public partial class relaObraCertificado
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int IdrelaObraCertificado { get; set; }
 
         [Column(TypeName = "date")]

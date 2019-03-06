@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebAppEjecucion.Models.Seguimiento>
+﻿@model IEnumerable<WebAppEjecucion.Models.Clases.RelacionSeguimientoPersona>
 
 @{
     ViewBag.Title = "Index";
@@ -22,6 +22,9 @@
             <th>
                 Estado Obra
             </th>
+            <th>
+                Inspector
+            </th>
             <th></th>
         </tr>
 
@@ -29,13 +32,16 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Obra.Obra1)
+                    @Html.DisplayFor(modelItem => item.Obra)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.FechaSeguimiento)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.EstadoObra.EstadoObra1)
+                    @Html.DisplayFor(modelItem => item.EstadoObra)
+                </td>
+                <td> 
+                    @Html.DisplayFor(modelItem => item.Inspector)
                 </td>
                 <td>
                     @Html.ActionLink("Ver detalles", "Details", new { id = item.IdSeguimiento }, new { @class = "btn btn-primary" }) |

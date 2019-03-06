@@ -4,15 +4,15 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Obra Certificado</h2>
+<h2>Certificados de Obra</h2>
 
 <p>
-    @Html.ActionLink("Agregar Certificado", "Create")
+    @Html.ActionLink("Agregar nuevo certificado", "Create", null, new { id = ViewBag.idObra }, new { @class = "btn btn-success" })
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Obra.expMatriz)
+            @Html.DisplayNameFor(model => model.Obra.Obra1)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TipoCertificado.TipoCertificado1)
@@ -29,7 +29,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Obra.expMatriz)
+            @Html.DisplayFor(modelItem => item.Obra.Obra1)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TipoCertificado.TipoCertificado1)
@@ -41,11 +41,14 @@
             @Html.DisplayFor(modelItem => item.Certificado)
         </td>
         <td>
-            @Html.ActionLink("Ver Detalles", "Details", new { id = item.IdrelaObraCertificado }, new { @class = "btn btn-primary" }) |
-            @Html.ActionLink("Editar", "Edit", new { id=item.IdrelaObraCertificado }, new { @class = "btn btn-warning" }) |            
-            @Html.ActionLink("Borrar", "Delete", new { id=item.IdrelaObraCertificado }, new { @class = "btn btn-danger" })
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdrelaObraCertificado }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdrelaObraCertificado }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdrelaObraCertificado })
         </td>
     </tr>
 }
 
 </table>
+<p>
+    @Html.ActionLink("Atras", "Details", "Obras", new { id = ViewBag.idObra }, new { @class = "btn btn-danger" })
+</p>
