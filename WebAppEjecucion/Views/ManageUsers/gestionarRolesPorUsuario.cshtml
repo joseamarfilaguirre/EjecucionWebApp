@@ -1,0 +1,26 @@
+﻿@model IEnumerable<String>
+<h2>Roles de @ViewBag.username</h2>
+    <p>@Html.ActionLink("Agregar Rol", "agregarRol", new { userid = ViewBag.userid }, new { @class = "btn btn-success" })</p>
+<table class="table">
+    <tr>
+        <th>
+            Nombre Rol
+        </th>
+        <th>Acciones</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item)
+        </td>
+        <td>
+            @Html.ActionLink("Eliminar Rol", "eliminarRol", new { userid = ViewBag.userid,rolid = item}, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>
+<div>
+    @Html.ActionLink("Atras", "index", "ManageUsers", new { result = -1 }, new { @class = "btn btn-danger" })
+</div>

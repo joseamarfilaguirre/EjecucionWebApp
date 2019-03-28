@@ -113,15 +113,31 @@
         <td>
             @Html.DisplayFor(modelItem => item.FechaInicio)
         </td>*@
+        @using Microsoft.AspNet.Identity
+        @if (Request.IsAuthenticated && Roles.IsUserInRole(User.Identity.Name, "Administrador"))
+        {
         <td>
             @Html.ActionLink("Ver Detalles", "Details", "Obras", new { id = item.IdObra }, new { @class = "btn btn-primary" })
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit","Obras", new { id=item.IdObra }, new { @class = "btn btn-warning" })
+            @Html.ActionLink("Editar", "Edit", "Obras", new { id = item.IdObra }, new { @class = "btn btn-warning" })
         </td>
         <td>
-            @Html.ActionLink("Borrar", "Delete", "Obras", new { id=item.IdObra }, new { @class = "btn btn-danger" })
+            @Html.ActionLink("Borrar", "Delete", "Obras", new { id = item.IdObra }, new { @class = "btn btn-danger" })
         </td>
+        }
+        else
+        {
+            <td>
+                @Html.ActionLink("Ver Detalles", "Details", "Obras", new { id = item.IdObra }, new { @class = "btn btn-primary" })
+            </td>
+            @*<td>
+                @Html.ActionLink("Editar", "Edit", "Obras", new { id = item.IdObra }, new { @class = "btn btn-warning" })
+            </td>
+            <td>
+                @Html.ActionLink("Borrar", "Delete", "Obras", new { id = item.IdObra }, new { @class = "btn btn-danger" })
+            </td>*@
+        }
     </tr>
 }
 

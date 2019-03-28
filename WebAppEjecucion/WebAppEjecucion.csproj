@@ -88,6 +88,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -197,6 +198,14 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Models\AspNetUserRoles.cs" />
+    <Compile Include="Controllers\ManageRolesController.cs" />
+    <Compile Include="Controllers\ManageUsersController.cs" />
+    <Compile Include="Models\AspNetRoles.cs" />
+    <Compile Include="Models\AspNetUserClaims.cs" />
+    <Compile Include="Models\AspNetUserLogins.cs" />
+    <Compile Include="Models\AspNetUsers.cs" />
     <Compile Include="Controllers\AvancesController.cs" />
     <Compile Include="Controllers\EmpresaConstructorasController.cs" />
     <Compile Include="Controllers\EntregasController.cs" />
@@ -382,6 +391,24 @@
     <Content Include="Views\Entregas\Details.cshtml" />
     <Content Include="Views\Entregas\Edit.cshtml" />
     <Content Include="Views\Entregas\Index.cshtml" />
+    <Content Include="Views\ManageUsers\Create.cshtml" />
+    <Content Include="Views\ManageUsers\Delete.cshtml" />
+    <Content Include="Views\ManageUsers\Details.cshtml" />
+    <Content Include="Views\ManageUsers\Edit.cshtml" />
+    <Content Include="Views\ManageUsers\Index.cshtml" />
+    <Content Include="Views\ManageUsers\ResetPassword.cshtml" />
+    <Content Include="Views\ManageRoles\Create.cshtml" />
+    <Content Include="Views\ManageRoles\Delete.cshtml" />
+    <Content Include="Views\ManageRoles\Details.cshtml" />
+    <Content Include="Views\ManageRoles\Edit.cshtml" />
+    <Content Include="Views\ManageRoles\Index.cshtml" />
+    <Content Include="Views\ManageUsers\gestionarRolesPorUsuario.cshtml" />
+    <Content Include="Views\ManageUsers\agregarRol.cshtml" />
+    <Content Include="Views\ManageRoles\CrearRol1.cshtml" />
+    <Content Include="Views\Shared\_MenuPartial.cshtml" />
+    <Content Include="Views\Error\Error403.cshtml" />
+    <Content Include="Views\Error\Error404.cshtml" />
+    <Content Include="Views\Error\Error500.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

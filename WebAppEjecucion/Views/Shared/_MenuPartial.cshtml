@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNet.Identity
+
+@if (Request.IsAuthenticated && Roles.IsUserInRole(User.Identity.Name, "Administrador"))
+{
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Empresas", "Index", "EmpresaConstructoras")</li>
+        <li>@Html.ActionLink("Programas", "Index", "Programas")</li>
+        <li>@Html.ActionLink("Prototipos", "Index", "Prototipos")</li>
+        <li>@Html.ActionLink("Gestion de Usuarios", "Index", "ManageUsers", routeValues: new { result = -1 }, htmlAttributes: new { title = "Manage" })</li>
+    </ul>
+}
+else if (Request.IsAuthenticated)
+{
+     <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Obras", "Index", "Obras")</li>
+        <li>@Html.ActionLink("Empresas", "Index", "EmpresaConstructoras")</li>
+        <li>@Html.ActionLink("Programas", "Index", "Programas")</li>
+        <li>@Html.ActionLink("Prototipos", "Index", "Prototipos")</li>
+    </ul>
+}
+else
+{
+    
+
+}
+

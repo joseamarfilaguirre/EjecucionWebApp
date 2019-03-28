@@ -21,13 +21,14 @@
                 @Html.ActionLink("Sistema de Seguimiento de Obra", "Index", "Obras", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                @*<ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Obras", "Index", "Obras")</li>
                     <li>@Html.ActionLink("Empresas", "Index", "EmpresaConstructoras")</li>
                     <li>@Html.ActionLink("Programas", "Index", "Programas")</li>
                     <li>@Html.ActionLink("Prototipos", "Index", "Prototipos")</li>
                     @*<li>@Html.ActionLink("Contacto", "Contact", "Home")</li>*@
-                </ul>
+                @*</ul>*@
+                @Html.Partial("_MenuPartial")
                 @Html.Partial("_LoginPartial")
             </div>
         </div>

@@ -1,0 +1,80 @@
+﻿@model IEnumerable<WebAppEjecucion.Models.AspNetUsers>
+
+@{
+    ViewBag.Title = "Index";
+}
+@if (ViewBag.resultado == 1)
+{
+    <div class="alert alert-success" role="alert">
+        La contraseña fue reseteada exitosamente!.
+    </div>
+
+}
+else if (ViewBag.resultado == 0)
+{
+    <div class="alert alert-danger" role="alert">
+        Ocurrió un erro!
+    </div>
+}
+<h2>Gestion de Usuarios</h2>
+<div class="row">
+    <div class="col col-md-2">
+        <p>@Html.ActionLink("Crear nuevo usuario", "Create", null, new { @class = "btn btn-success" })</p>
+    </div>
+    <div class="col col-md-2">
+        <p>@Html.ActionLink("Gestion de Roles", "index","ManageRoles", null, new { @class = "btn btn-success" })</p>
+    </div>
+</div>
+    <table class="table table-responsive">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailConfirmed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailConfirmed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                @*<td>
+                        @Html.ActionLink("Ver Detalles", "Details",  new { id = item.Id }, new { @class = "btn btn-primary" })
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-warning" })
+                    </td>*@
+                <td>
+                    @Html.ActionLink("Roles", "gestionarRolesPorUsuario", new { userid = item.Id }, new { @class = "btn btn-warning" })
+                </td>
+                <td>
+                    @Html.ActionLink("Desactivar", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                </td>
+                <td>
+                    @Html.ActionLink("Resetear Contraseña", "ResetPassWord", new { code = item.Id }, new { @class = "btn btn-warning" })
+                </td>
+            </tr>
+        }
+
+    </table>

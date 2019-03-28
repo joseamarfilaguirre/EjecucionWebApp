@@ -11,6 +11,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using WebAppEjecucion.Models;
+using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace WebAppEjecucion
 {
@@ -54,10 +56,10 @@ namespace WebAppEjecucion
             manager.PasswordValidator = new PasswordValidator
             {
                 RequiredLength = 6,
-                RequireNonLetterOrDigit = true,
-                RequireDigit = true,
-                RequireLowercase = true,
-                RequireUppercase = true,
+                RequireNonLetterOrDigit = false,
+                RequireDigit = false,
+                RequireLowercase = false,
+                RequireUppercase = false,
             };
 
             // Configurar valores predeterminados para bloqueo de usuario
@@ -104,6 +106,36 @@ namespace WebAppEjecucion
         public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)
         {
             return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
+        }
+    }
+    public class AccessDeniedAuthorizeAttribute : AuthorizeAttribute
+    {
+        public override void OnAuthorization(AuthorizationContext filterContext)
+        {
+            base.OnAuthorization(filterContext);
+
+            // Redirect to the login page if necessary
+            if (!filterContext.HttpContext.User.Identity.IsAuthenticated)
+            {
+                //arreglar esto
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { action = "Login", controller = "account" }));
+                    //System.Web.Security.FormsAuthentication.LoginUrl);// + "?returnUrl=" + filterContext.HttpContext.Request.Url);
+                return;
+            }
+            else
+            {
+                // Redirect to your "access denied" view here
+                if (filterContext.Result is HttpUnauthorizedResult)
+                {
+                    filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { action = "Error403", controller = "Error" }));
+                }
+                if (filterContext.Result is HttpNotFoundResult)
+                {
+                    filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { action = "Error404", controller = "Error" }));
+                }
+            }
+
+
         }
     }
 }

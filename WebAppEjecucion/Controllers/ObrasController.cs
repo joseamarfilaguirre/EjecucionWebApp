@@ -7,9 +7,13 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebAppEjecucion.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace WebAppEjecucion.Controllers
 {
+    //[Authorize(Roles = "EmpleadoIPV")]
+    [AccessDeniedAuthorize(Roles = "EmpleadoIPV,Administrador,Certificador")]
     public class ObrasController : Controller
     {
         private ConexionEjecucionDB db = new ConexionEjecucionDB();
@@ -17,8 +21,19 @@ namespace WebAppEjecucion.Controllers
         // GET: Obras
         public ActionResult Index()
         {
-            var obra = db.Obra.Include(o => o.DptoProvincia).Include(o => o.EmpresaConstructora).Include(o => o.Programa);
-            return View(obra.ToList());
+            var autenticado = User.Identity.IsAuthenticated;
+            var id = User.Identity.GetUserId();
+            if (autenticado)
+            {
+                var obra = db.Obra.Include(o => o.DptoProvincia).Include(o => o.EmpresaConstructora).Include(o => o.Programa);
+                return View(obra.ToList());
+            }
+            else
+            {
+
+                return View(new List<Obra>());
+            }
+            
         }
 
         // GET: Obras/Details/5
@@ -37,6 +52,7 @@ namespace WebAppEjecucion.Controllers
         }
 
         // GET: Obras/Create
+       
         public ActionResult Create()
         {
             ViewBag.IdDptoProvincia = new SelectList(db.DptoProvincia, "IdDptoProvincia", "DptoProvincia1");
@@ -66,6 +82,7 @@ namespace WebAppEjecucion.Controllers
         }
 
         // GET: Obras/Edit/5
+        [AccessDeniedAuthorize(Roles = "Administrador,Certificador")]
         public ActionResult Edit(int? id)
         {
             if (id == null)

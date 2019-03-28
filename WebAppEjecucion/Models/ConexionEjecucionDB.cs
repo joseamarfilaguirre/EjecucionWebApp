@@ -44,6 +44,15 @@
         public virtual DbSet<relaObraEqInformatico> relaObraEqInformatico { get; set; }
         public virtual DbSet<relaObraMovilidad> relaObraMovilidad { get; set; }
 
+        /// <summary>
+        /// Clases para gestion de usuarios y Roles
+        /// </summary>
+        public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
+        public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CertificadoObra>()
@@ -225,6 +234,23 @@
                 .HasMany(e => e.relaObraCertificado)
                 .WithRequired(e => e.TipoCertificado)
                 .WillCascadeOnDelete(false);
+
+            ////Gestion de Usuarios y Roles
+
+            modelBuilder.Entity<AspNetRoles>()
+                .HasMany(e => e.AspNetUsers)
+                .WithMany(e => e.AspNetRoles)
+                .Map(m => m.ToTable("AspNetUserRoles").MapLeftKey("RoleId").MapRightKey("UserId"));
+
+            modelBuilder.Entity<AspNetUsers>()
+                .HasMany(e => e.AspNetUserClaims)
+                .WithRequired(e => e.AspNetUsers)
+                .HasForeignKey(e => e.UserId);
+
+            modelBuilder.Entity<AspNetUsers>()
+                .HasMany(e => e.AspNetUserLogins)
+                .WithRequired(e => e.AspNetUsers)
+                .HasForeignKey(e => e.UserId);
         }
     }
 }
