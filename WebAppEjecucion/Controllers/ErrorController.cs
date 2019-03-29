@@ -20,5 +20,9 @@ namespace WebAppEjecucion.Controllers
         {
             return View();
         }
+        public ActionResult Bloqueado()
+        {
+            return View();
+        }
     }
 }

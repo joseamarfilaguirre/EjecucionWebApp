@@ -246,6 +246,21 @@ namespace WebAppEjecucion.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult desactivarUsuario(string id) {
+            AspNetUsersBlock aspNetUsersBlock = new AspNetUsersBlock();
+            aspNetUsersBlock.UserId = id;
+            aspNetUsersBlock.FechaBloqueo = DateTime.Now;
+            db.AspNetUsersBlock.Add(aspNetUsersBlock);
+            db.SaveChanges();
+            return RedirectToAction("Index", new { result = -1 });
+        }
+        public ActionResult activarUsuario(string id) {
+            AspNetUsersBlock aspNetUsersBlock = db.AspNetUsersBlock.Where(x => x.UserId == id).FirstOrDefault();
+            db.AspNetUsersBlock.Remove(aspNetUsersBlock);
+            db.SaveChanges();
+            return RedirectToAction("Index", new { result = -1 });
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
