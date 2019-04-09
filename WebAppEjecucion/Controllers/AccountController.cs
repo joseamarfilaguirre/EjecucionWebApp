@@ -75,8 +75,10 @@ namespace WebAppEjecucion.Controllers
             }
             using (ConexionEjecucionDB db = new ConexionEjecucionDB())
             {
-
+                ///revisar esta logica
                 var user = db.AspNetUsers.Where(x => x.Email == model.Email).FirstOrDefault();
+                if (user != null) {
+                }
                 var block = db.AspNetUsersBlock.Where(y => y.UserId == user.Id).FirstOrDefault();
                 if (block!=null)
                 {
