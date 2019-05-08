@@ -1,0 +1,168 @@
+﻿@model WebAppEjecucion.Models.PlanTrabajo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles del Plan de Trabajo</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpresaConstructora.EmpresaConstructora1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpresaConstructora.EmpresaConstructora1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Obra.expMatriz)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Obra.expMatriz)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.plazoOriginal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.plazoOriginal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaFinalizacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaFinalizacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.montoContrato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.montoContrato)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado)
+        </dt>
+
+        @if (Model.estado == true)
+        {
+            <dd>
+                Activo
+            </dd>
+        }
+        else
+        {
+            <dd>
+                Inactivo
+            </dd>
+        }
+
+    </dl>
+</div>
+@if (ViewBag.Plandetalle.Count != 0)
+{
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['line'] });
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+          var data = google.visualization.arrayToDataTable(@ViewBag.datosCharts);
+        //  var options = {
+        //  title: 'Avances de obra',
+        //  curveType: 'function',
+        //  legend: { position: 'bottom' }
+        //};
+
+        //var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+          //chart.draw(data, options);
+          var options = {
+              chart: {
+                  title: 'Avances de Obra',
+                  subtitle: 'Porcentajes mensuales'
+              }
+          };
+
+          var chart = new google.charts.Line(document.getElementById('linechart_material'));
+
+          chart.draw(data, google.charts.Line.convertOptions(options));
+      }
+    </script>
+    <div id="linechart_material" style="width: 900px; height: 500px"></div>
+}
+<h2>Detalles de Plan de Trabajo y Avances</h2>
+<p>
+    @Html.ActionLink("Agregar Avance", "Create", "PlanTrabajoDetalles", new { id = ViewBag.idobra }, new { @class = "btn btn-success" })
+</p>
+@if (ViewBag.Plandetalle.Count!=0)
+{
+    <table class="table">
+        <tr>
+            <th>
+                Porcentaje Previsto
+            </th>
+            <th>
+                Porcentaje Real
+            </th>
+            <th>
+                Porcentaje de Atraso
+            </th>
+            <th>
+                Fecha de Avance
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in ViewBag.Plandetalle)
+        {
+            <tr>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.porcentajePrevisto)%*@
+                    @item.porcentajePrevisto
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.porcentajeReal)%*@
+                    @item.porcentajeReal
+                </td>
+                <td>
+                    @(item.porcentajePrevisto - item.porcentajeReal)
+                    @*@Html.DisplayFor(modelItem => item.porcentajeAtraso)%*@
+                    @*@item.porcentajeAtraso*@
+                </td>
+                <td>
+                    @item.FechaAvance.ToString("dd/MM/yyyy")
+                   
+                </td>
+                <td>
+                    @Html.ActionLink("Ver Detalles", "Details","PlanTrabajoDetalles", new { id = item.IdPlanTrabajoDet }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Editar", "Edit", "PlanTrabajoDetalles", new { id = item.IdPlanTrabajoDet }, new { @class = "btn btn-warning" }) |
+                    @Html.ActionLink("Borrar", "Delete", "PlanTrabajoDetalles", new { id = item.IdPlanTrabajoDet }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>La Obra no tiene Avances cargados</p>
+}
+<p>
+    @Html.ActionLink("Atras", "index", "PlanTrabajo", new { id = Model.IdObra }, new { @class = "btn btn-danger" })
+</p>
+

@@ -1,0 +1,57 @@
+﻿@model WebAppEjecucion.Models.PlanTrabajoDetalle
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>PlanTrabajoDetalle</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PlanTrabajo.IdPlanTrabajo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlanTrabajo.IdPlanTrabajo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaAvance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaAvance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.porcentajePrevisto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.porcentajePrevisto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.porcentajeReal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.porcentajeReal)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Atras", "details", "PlanTrabajo", new { id = ViewBag.idPlan }, new { @class = "btn btn-danger" })
+        </div>
+
+    }
+</div>

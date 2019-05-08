@@ -198,6 +198,10 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\PlanTrabajoController.cs" />
+    <Compile Include="Controllers\PlanTrabajoDetalles1Controller.cs" />
+    <Compile Include="Controllers\PlanTrabajoDetallesController.cs" />
+    <Compile Include="Libraries\DecimalModelBinder.cs" />
     <Compile Include="Models\AspNetUsersBlock.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Models\AspNetUserRoles.cs" />
@@ -249,6 +253,8 @@
     <Compile Include="Models\Param_Meses.cs" />
     <Compile Include="Models\Personas.cs" />
     <Compile Include="Models\Programa.cs" />
+    <Compile Include="Models\PlanTrabajo.cs" />
+    <Compile Include="Models\PlanTrabajoDetalle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Prototipos.cs" />
     <Compile Include="Models\relaObraAnticipoFinanciero.cs" />
@@ -411,6 +417,17 @@
     <Content Include="Views\Error\Error404.cshtml" />
     <Content Include="Views\Error\Error500.cshtml" />
     <Content Include="Views\Error\Bloqueado.cshtml" />
+    <Content Include="Views\PlanTrabajo\Create.cshtml" />
+    <Content Include="Views\PlanTrabajo\Delete.cshtml" />
+    <Content Include="Views\PlanTrabajo\Details.cshtml" />
+    <Content Include="Views\PlanTrabajo\Edit.cshtml" />
+    <Content Include="Views\PlanTrabajo\Index.cshtml" />
+    <Content Include="Views\PlanTrabajoDetalles\Create.cshtml" />
+    <Content Include="Views\PlanTrabajoDetalles\Delete.cshtml" />
+    <Content Include="Views\PlanTrabajoDetalles\Details.cshtml" />
+    <Content Include="Views\PlanTrabajoDetalles\Edit.cshtml" />
+    <Content Include="Views\PlanTrabajoDetalles\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Double.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

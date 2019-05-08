@@ -18,6 +18,7 @@ namespace WebAppEjecucion.Models
         [Key]
         public int IdDptoProvincia { get; set; }
 
+        [Display(Name = "Departamento")]
         [Column("DptoProvincia")]
         [Required]
         [StringLength(100)]

@@ -25,7 +25,9 @@ namespace WebAppEjecucion.Controllers
             var id = User.Identity.GetUserId();
             if (autenticado)
             {
-                var obra = db.Obra.Include(o => o.DptoProvincia).Include(o => o.EmpresaConstructora).Include(o => o.Programa);
+                var obra = db.Obra
+                    .Include(o => o.DptoProvincia)
+                    .Include(o => o.Programa);
                 return View(obra.ToList());
             }
             else
@@ -48,6 +50,14 @@ namespace WebAppEjecucion.Controllers
             {
                 return HttpNotFound();
             }
+            try
+            {
+                ViewBag.ObraPadre = db.Obra.Where(o => o.IdObra == obra.IdObraPadre).ToList()[0].Obra1;
+            }
+            catch
+            {
+                ViewBag.ObraPadre = "No tiene";
+            }
             return View(obra);
         }
 
@@ -56,7 +66,10 @@ namespace WebAppEjecucion.Controllers
         public ActionResult Create()
         {
             ViewBag.IdDptoProvincia = new SelectList(db.DptoProvincia, "IdDptoProvincia", "DptoProvincia1");
-            ViewBag.IdEmpConstructora = new SelectList(db.EmpresaConstructora, "IdEmpConstructora", "EmpresaConstructora1");
+           // var item = new { IdObra = "", Obra1 = "Seleccione Obra" };
+            var obrasp = new SelectList(db.Obra, "IdObra", "Obra1");
+            ViewBag.IdObraPadre = obrasp; 
+
             ViewBag.IdPrograma = new SelectList(db.Programa, "IdPrograma", "Programa1");
             return View();
         }
@@ -66,7 +79,7 @@ namespace WebAppEjecucion.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdObra,expMatriz,Obra1,ACCU,IdDptoProvincia,IdPrograma,IdEmpConstructora,cantParaSorteo,montoOriginal,licitacionResolucion,plazoOriginal,fechaFinalizacion,MontoContratoPesos,MontoContratoUVI,FechaOferta,FechaInicio")] Obra obra)
+        public ActionResult Create([Bind(Include = "IdObra,expMatriz,Obra1,ACCU,IdDptoProvincia,IdPrograma,IdObraPadre,cantParaSorteo,montoOriginal,licitacionResolucion,MontoContratoPesos,FechaOferta")] Obra obra)
         {
             if (ModelState.IsValid)
             {
@@ -76,7 +89,8 @@ namespace WebAppEjecucion.Controllers
             }
 
             ViewBag.IdDptoProvincia = new SelectList(db.DptoProvincia, "IdDptoProvincia", "DptoProvincia1", obra.IdDptoProvincia);
-            ViewBag.IdEmpConstructora = new SelectList(db.EmpresaConstructora, "IdEmpConstructora", "EmpresaConstructora1", obra.IdEmpConstructora);
+            //ViewBag.IdEmpConstructora = new SelectList(db.EmpresaConstructora, "IdEmpConstructora", "EmpresaConstructora1", obra.IdEmpConstructora);
+            ViewBag.IdObraPadre = new SelectList(db.Obra, "IdObra", "Obra1",obra.IdObraPadre);
             ViewBag.IdPrograma = new SelectList(db.Programa, "IdPrograma", "Programa1", obra.IdPrograma);
             return View(obra);
         }
@@ -95,7 +109,8 @@ namespace WebAppEjecucion.Controllers
                 return HttpNotFound();
             }
             ViewBag.IdDptoProvincia = new SelectList(db.DptoProvincia, "IdDptoProvincia", "DptoProvincia1", obra.IdDptoProvincia);
-            ViewBag.IdEmpConstructora = new SelectList(db.EmpresaConstructora, "IdEmpConstructora", "EmpresaConstructora1", obra.IdEmpConstructora);
+            //ViewBag.IdEmpConstructora = new SelectList(db.EmpresaConstructora, "IdEmpConstructora", "EmpresaConstructora1", obra.IdEmpConstructora);
+            ViewBag.IdObraPadre = new SelectList(db.Obra, "IdObra", "Obra1", obra.IdObraPadre);
             ViewBag.IdPrograma = new SelectList(db.Programa, "IdPrograma", "Programa1", obra.IdPrograma);
             return View(obra);
         }
@@ -105,7 +120,7 @@ namespace WebAppEjecucion.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdObra,expMatriz,Obra1,ACCU,IdDptoProvincia,IdPrograma,IdEmpConstructora,cantParaSorteo,montoOriginal,licitacionResolucion,plazoOriginal,fechaFinalizacion,MontoContratoPesos,MontoContratoUVI,FechaOferta,FechaInicio")] Obra obra)
+        public ActionResult Edit([Bind(Include = "IdObra,expMatriz,Obra1,ACCU,IdDptoProvincia,IdPrograma,IdObraPadre,cantParaSorteo,montoOriginal,licitacionResolucion,MontoContratoPesos,FechaOferta,Checkeado")] Obra obra)
         {
             if (ModelState.IsValid)
             {
@@ -114,7 +129,8 @@ namespace WebAppEjecucion.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.IdDptoProvincia = new SelectList(db.DptoProvincia, "IdDptoProvincia", "DptoProvincia1", obra.IdDptoProvincia);
-            ViewBag.IdEmpConstructora = new SelectList(db.EmpresaConstructora, "IdEmpConstructora", "EmpresaConstructora1", obra.IdEmpConstructora);
+            //ViewBag.IdEmpConstructora = new SelectList(db.EmpresaConstructora, "IdEmpConstructora", "EmpresaConstructora1", obra.IdEmpConstructora);
+           // ViewBag.IdObraPadre = new SelectList(db.Obra, "IdObra", "Obra1", obra.IdObraPadre);
             ViewBag.IdPrograma = new SelectList(db.Programa, "IdPrograma", "Programa1", obra.IdPrograma);
             return View(obra);
         }

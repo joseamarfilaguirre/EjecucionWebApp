@@ -21,6 +21,7 @@ namespace WebAppEjecucion.Models
             relaObraCertificado = new HashSet<relaObraCertificado>();
             relaObraPrototipo = new HashSet<relaObraPrototipo>();
             Seguimiento = new HashSet<Seguimiento>();
+            PlanTrabajo = new HashSet<PlanTrabajo>();
         }
 
         [Key]
@@ -46,8 +47,8 @@ namespace WebAppEjecucion.Models
         [Display(Name = "Programa")]
         public int? IdPrograma { get; set; }
 
-        [Display(Name = "Empresa Constructora")]
-        public int? IdEmpConstructora { get; set; }
+        [Display(Name = "Obra Padre")]
+        public int? IdObraPadre { get; set; }
 
         [Display(Name = "Cantidad Para Sorteo")]
         public int? cantParaSorteo { get; set; }
@@ -58,26 +59,28 @@ namespace WebAppEjecucion.Models
         [Display(Name = "Licitacion/Resolucion")]
         [StringLength(50,ErrorMessage = "El campo Licitacion/Resolucion debe tener una longitud máxima de 50")]
         public string licitacionResolucion { get; set; }
-        [Display(Name = "Plazo Original en dias")]
-        public int? plazoOriginal { get; set; }
+        //[Display(Name = "Plazo Original en dias")]
+        //public int? plazoOriginal { get; set; }
 
-        [Display(Name = "Fecha de Finalizacion")]
-        [Column(TypeName = "date")]
-        public DateTime? fechaFinalizacion { get; set; }
+        //[Display(Name = "Fecha de Finalizacion")]
+        //[Column(TypeName = "date")]
+        //public DateTime? fechaFinalizacion { get; set; }
 
-        [Display(Name = "Monto de Contrato en Pesos")]
-        public double? MontoContratoPesos { get; set; }
+        //[Display(Name = "Monto de Contrato en Pesos")]
+        //public double? MontoContratoPesos { get; set; }
 
-        [Display(Name = "Monto de Contrato en UVIS")]
-        public double? MontoContratoUVI { get; set; }
+        //[Display(Name = "Monto de Contrato en UVIS")]
+        //public double? MontoContratoUVI { get; set; }
 
         [Display(Name = "Fecha de Oferta")]
         [Column(TypeName = "date")]
         public DateTime? FechaOferta { get; set; }
 
-        [Display(Name = "Fecha de Inicio")]
-        [Column(TypeName = "date")]
-        public DateTime? FechaInicio { get; set; }
+        [Display(Name = "Obra Checkeada")]
+        public bool Checkeado { get; set; }
+        //[Display(Name = "Fecha de Inicio")]
+        //[Column(TypeName = "date")]
+        //public DateTime? FechaInicio { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Avance> Avance { get; set; }
@@ -90,8 +93,8 @@ namespace WebAppEjecucion.Models
 
         public virtual DptoProvincia DptoProvincia { get; set; }
 
-        public virtual EmpresaConstructora EmpresaConstructora { get; set; }
-
+        //public virtual Obra Obra { get; set; }
+     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         //public virtual ICollection<Entregas> Entregas { get; set; }
 
@@ -111,5 +114,8 @@ namespace WebAppEjecucion.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Seguimiento> Seguimiento { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PlanTrabajo> PlanTrabajo { get; set; }
     }
 }

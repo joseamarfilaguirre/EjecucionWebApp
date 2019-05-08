@@ -13,6 +13,7 @@ namespace WebAppEjecucion.Controllers
     public class AvancesController : Controller
     {
         private ConexionEjecucionDB db = new ConexionEjecucionDB();
+        private int? idObra;
 
         //GET: Avances
         //public ActionResult Index()
@@ -23,6 +24,7 @@ namespace WebAppEjecucion.Controllers
         //}
         public ActionResult Index(int? id)
         {
+            idObra = id;
             ///Aca filtrar por IdObra
             ///Hacer procedimiento que busque por IdObra
             //var avance = db.Avance.Include(a => a.Obra);
@@ -108,7 +110,7 @@ namespace WebAppEjecucion.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdObra = new SelectList(db.Obra.Where(x => x.IdObra == id), "IdObra", "Obra1");
+            ViewBag.IdObra = new SelectList(db.Obra.Where(x => x.IdObra == idObra), "IdObra", "Obra1");
             return View(avance);
         }
 

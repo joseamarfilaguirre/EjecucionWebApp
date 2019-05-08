@@ -1,0 +1,50 @@
+﻿@model WebAppEjecucion.Models.PlanTrabajoDetalle
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PlanTrabajoDetalle</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaAvance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaAvance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.porcentajePrevisto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.porcentajePrevisto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.porcentajeReal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.porcentajeReal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.porcentajeAtraso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.porcentajeAtraso)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.IdPlanTrabajoDet }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Atras", "details", "PlanTrabajo", new { id = Model.IdPlanTrabajo }, new { @class = "btn btn-danger" })
+</p>

@@ -20,12 +20,12 @@ namespace WebAppEjecucion.Models
 
         [Column(TypeName = "date")]
         [Display(Name ="Fecha de Seguimiento")]
-        public DateTime FechaSeguimiento { get; set; }
+        public DateTime? FechaSeguimiento { get; set; }
 
         [Display(Name = "Obra")]
-        public int IdObra { get; set; }
+        public int? IdObra { get; set; }
         [Display(Name = "Estado de Obra")]
-        public int IdEstadoObra { get; set; }
+        public int? IdEstadoObra { get; set; }
 
         public virtual Obra Obra { get; set; }
         public virtual EstadoObra EstadoObra { get; set; }

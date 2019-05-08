@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using WebAppEjecucion.Libraries;
 
 namespace WebAppEjecucion
 {
@@ -16,6 +17,7 @@ namespace WebAppEjecucion
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            ModelBinders.Binders.Add(typeof(double), new DecimalModelBinder());
         }
     }
 }

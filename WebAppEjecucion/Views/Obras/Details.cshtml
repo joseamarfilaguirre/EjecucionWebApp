@@ -8,7 +8,7 @@
 <div>
     <div class="row">
         <div class="col col-md-2">
-            <p>@Html.ActionLink("Avances", "Index", "Avances", new { id = Model.IdObra }, new { @class ="btn btn-info"})</p>
+            <p>@Html.ActionLink("Plan de Trabajo", "Index", "PlanTrabajo", new { id = Model.IdObra }, new { @class ="btn btn-info"})</p>
         </div>
         <div class="col col-md-2">
             <p>@Html.ActionLink("Entregas", "Index", "Entregas", new { id = Model.IdObra }, new { @class ="btn btn-info"})</p>
@@ -33,19 +33,19 @@
             @Html.DisplayFor(model => model.Obra1)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.DptoProvincia)
+            @Html.DisplayNameFor(model => model.DptoProvincia.DptoProvincia1)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.DptoProvincia.DptoProvincia1)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EmpresaConstructora)
+       <dt>
+           Obra Padre
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.EmpresaConstructora.EmpresaConstructora1)
+           @ViewBag.ObraPadre
         </dd>
 
         <dt>
@@ -96,7 +96,7 @@
             @Html.DisplayFor(model => model.licitacionResolucion)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.plazoOriginal)
         </dt>
 
@@ -131,7 +131,7 @@
 
         <dd>
             @Html.DisplayFor(model => model.MontoContratoUVI)
-        </dd>
+        </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.FechaOferta)
@@ -140,10 +140,28 @@
         <dd>
             @Html.DisplayFor(model => model.FechaOferta)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Checkeado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Checkeado)
+        </dd>
+
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Atras", "Index", "Obras", null, new { @class = "btn btn-danger" }) |
-    @Html.ActionLink("Editar", "Edit", "Obras", new { id = Model.IdObra }, new { @class = "btn btn-primary" })
-</p>
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated && Roles.IsUserInRole(User.Identity.Name, "Administrador") && !Model.Checkeado)
+{
+    <p>
+        @Html.ActionLink("Atras", "Index", "Obras", null, new { @class = "btn btn-danger" }) |
+        @Html.ActionLink("Editar", "Edit", "Obras", new { id = Model.IdObra }, new { @class = "btn btn-primary" })
+    </p>
+}
+else
+{
+    <p>
+        @Html.ActionLink("Atras", "Index", "Obras", null, new { @class = "btn btn-danger" })
+    </p>
+}
 

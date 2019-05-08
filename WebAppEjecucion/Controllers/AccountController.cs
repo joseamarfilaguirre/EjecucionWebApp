@@ -77,7 +77,9 @@ namespace WebAppEjecucion.Controllers
             {
                 ///revisar esta logica
                 var user = db.AspNetUsers.Where(x => x.Email == model.Email).FirstOrDefault();
-                if (user != null) {
+                if (user == null) {
+                    ModelState.AddModelError("", "Intento de inicio de sesión no válido.");
+                    return View(model);
                 }
                 var block = db.AspNetUsersBlock.Where(y => y.UserId == user.Id).FirstOrDefault();
                 if (block!=null)

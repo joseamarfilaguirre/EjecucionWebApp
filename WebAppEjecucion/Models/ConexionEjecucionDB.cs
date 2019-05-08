@@ -43,6 +43,8 @@
         public virtual DbSet<relaObraContratados> relaObraContratados { get; set; }
         public virtual DbSet<relaObraEqInformatico> relaObraEqInformatico { get; set; }
         public virtual DbSet<relaObraMovilidad> relaObraMovilidad { get; set; }
+        public virtual DbSet<PlanTrabajo> PlanTrabajo { get; set; }
+        public virtual DbSet<PlanTrabajoDetalle> PlanTrabajoDetalle { get; set; }
 
         /// <summary>
         /// Clases para gestion de usuarios y Roles
@@ -258,6 +260,18 @@
                 .WithRequired(e => e.AspNetUsers)
                 .HasForeignKey(e => e.UserId)
                 .WillCascadeOnDelete(false);
+
+            ///nuevos
+            modelBuilder.Entity<EmpresaConstructora>()
+             .HasMany(e => e.PlanTrabajo)
+             .WithRequired(e => e.EmpresaConstructora)
+             .HasForeignKey(e => e.IdEmpresaConstructora)
+             .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<PlanTrabajo>()
+              .HasMany(e => e.PlanTrabajoDetalle)
+              .WithRequired(e => e.PlanTrabajo)
+              .WillCascadeOnDelete(false);
         }
     }
 }
