@@ -1,5 +1,5 @@
-﻿@model IEnumerable<WebAppEjecucion.Models.Obra>
-
+﻿@*@model IEnumerable<WebAppEjecucion.Models.Obra>*@
+@model WebAppEjecucion.Models.ViewModels.ObrasViewModel
 @{
     ViewBag.Title = "Obras";
 }
@@ -12,13 +12,16 @@
 <table class="table table-responsive">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Obra1)
+            @*@Html.DisplayNameFor(model => model.Obra1)*@
+            Nombre de Obra
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DptoProvincia.DptoProvincia1)
+            @*@Html.DisplayNameFor(model => model.DptoProvincia.DptoProvincia1)*@
+            Departamento
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Checkeado)
+            @*@Html.DisplayNameFor(model => model.Checkeado)*@
+            Obra Checkeada
         </th>
         @*<th>
             @Html.DisplayNameFor(model => model.fechaFinalizacion)
@@ -28,7 +31,7 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.Obras) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Obra1)
@@ -65,3 +68,5 @@
 }
 
 </table>
+@{Html.RenderPartial("_paginador", Model);}
+

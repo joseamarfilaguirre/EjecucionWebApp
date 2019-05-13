@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using WebAppEjecucion.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using WebAppEjecucion.Models.ViewModels;
 
 namespace WebAppEjecucion.Controllers
 {
@@ -19,21 +20,45 @@ namespace WebAppEjecucion.Controllers
         private ConexionEjecucionDB db = new ConexionEjecucionDB();
 
         // GET: Obras
-        public ActionResult Index()
+        public ActionResult Index(int pagina = 1)
         {
+            var cantidadRegistrosPorPagina = 5; // parámetro
+
+
             var autenticado = User.Identity.IsAuthenticated;
             var id = User.Identity.GetUserId();
             if (autenticado)
             {
+                //var obra = db.Obra
+                //    .Include(o => o.DptoProvincia)
+                //    .Include(o => o.Programa);
+                //var personas = db.Personas.Where(predicado).OrderBy(x => x.Id)
+                //    .Skip((pagina - 1) * cantidadRegistrosPorPagina)
+                //    .Take(cantidadRegistrosPorPagina).ToList();
+                //var totalDeRegistros = db.Personas.Where(predicado).Count();
+
                 var obra = db.Obra
-                    .Include(o => o.DptoProvincia)
-                    .Include(o => o.Programa);
-                return View(obra.ToList());
+                 .Include(o => o.DptoProvincia)
+                 .Include(o => o.Programa).OrderBy(x=>x.IdObra)
+                 .Skip((pagina - 1) * cantidadRegistrosPorPagina)
+                    .Take(cantidadRegistrosPorPagina).ToList();
+                var totalDeRegistros = db.Obra.Count();
+                var modelo = new ObrasViewModel();
+                modelo.Obras = obra;
+                modelo.PaginaActual = pagina;
+                modelo.TotalDeRegistros = totalDeRegistros;
+                modelo.RegistrosPorPagina = cantidadRegistrosPorPagina;
+                return View(modelo);
             }
             else
             {
 
-                return View(new List<Obra>());
+                var modelo = new ObrasViewModel();
+                modelo.Obras = new List<Obra>();
+                modelo.PaginaActual = pagina;
+                modelo.TotalDeRegistros = 0;
+                modelo.RegistrosPorPagina = cantidadRegistrosPorPagina;
+                return View(modelo);
             }
             
         }
