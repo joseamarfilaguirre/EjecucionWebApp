@@ -43,7 +43,11 @@ namespace WebAppEjecucion.Controllers
             ViewBag.IdPlanTrabajo = new SelectList(db.PlanTrabajo.Where(o=>o.IdPlanTrabajo == id), "IdPlanTrabajo", "FechaInicio",id);
             return View();
         }
+        public static int MonthDifference(DateTime FechaFin, DateTime FechaInicio)
+        {
+            return Math.Abs((FechaFin.Month - FechaInicio.Month) + 12 * (FechaFin.Year - FechaInicio.Year));
 
+        }
         // POST: PlanTrabajoDetalles/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -53,6 +57,9 @@ namespace WebAppEjecucion.Controllers
         {
             if (ModelState.IsValid)
             {
+                var plan = db.PlanTrabajo.Find(planTrabajoDetalle.IdPlanTrabajo);
+                int periodo = MonthDifference(planTrabajoDetalle.FechaAvance, plan.FechaInicio);
+                planTrabajoDetalle.numeroPeriodo = periodo+1;
                 db.PlanTrabajoDetalle.Add(planTrabajoDetalle);
                 db.SaveChanges();
                 return RedirectToAction("Details", "PlanTrabajo", new { id = planTrabajoDetalle.IdPlanTrabajo });
@@ -88,6 +95,9 @@ namespace WebAppEjecucion.Controllers
         {
             if (ModelState.IsValid)
             {
+                var plan = db.PlanTrabajo.Find(planTrabajoDetalle.IdPlanTrabajo);
+                int periodo = MonthDifference(planTrabajoDetalle.FechaAvance, plan.FechaInicio);
+                planTrabajoDetalle.numeroPeriodo = periodo + 1;
                 db.Entry(planTrabajoDetalle).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Details","PlanTrabajo",new { id = planTrabajoDetalle.IdPlanTrabajo });

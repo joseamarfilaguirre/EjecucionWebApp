@@ -1,5 +1,5 @@
-﻿@model IEnumerable<WebAppEjecucion.Models.EmpresaConstructora>
-
+﻿@*@model IEnumerable<WebAppEjecucion.Models.EmpresaConstructora>*@
+@model WebAppEjecucion.Models.ViewModels.EmpresaViewModel
 @{
     ViewBag.Title = "Index";
 }
@@ -17,7 +17,7 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.Empresas) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.EmpresaConstructora1)
@@ -31,3 +31,4 @@
 }
 
 </table>
+@{Html.RenderPartial("_paginador", Model);}

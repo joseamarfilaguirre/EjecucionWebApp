@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebAppEjecucion.Models;
+using WebAppEjecucion.Models.ViewModels;
 
 namespace WebAppEjecucion.Controllers
 {
@@ -15,9 +16,20 @@ namespace WebAppEjecucion.Controllers
         private ConexionEjecucionDB db = new ConexionEjecucionDB();
 
         // GET: Prototipos
-        public ActionResult Index()
+        public ActionResult Index(int pagina = 1)
         {
-            return View(db.Prototipos.ToList());
+            var cantidadRegistrosPorPagina = 5; // parámetro
+            var prototipos = db.Prototipos
+                .OrderBy(x => x.IdPrototipo)
+                .Skip((pagina - 1) * cantidadRegistrosPorPagina)
+                .Take(cantidadRegistrosPorPagina).ToList();
+            var totalDeRegistros = db.EmpresaConstructora.Count();
+            var modelo = new PrototiposViewModel();
+            modelo.Prototipos = prototipos;
+            modelo.PaginaActual = pagina;
+            modelo.TotalDeRegistros = totalDeRegistros;
+            modelo.RegistrosPorPagina = cantidadRegistrosPorPagina;
+            return View(modelo);
         }
 
         // GET: Prototipos/Details/5

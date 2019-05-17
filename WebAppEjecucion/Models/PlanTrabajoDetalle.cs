@@ -24,6 +24,9 @@ namespace WebAppEjecucion.Models
         [Display(Name = "Porcentaje Previsto")]
         public Double porcentajePrevisto { get; set; }
 
+        
+        public int numeroPeriodo { get; set; }
+
         [Display(Name = "Porcentaje Real")]
         public Double porcentajeReal { get; set; }
 

@@ -115,6 +115,9 @@
     <table class="table">
         <tr>
             <th>
+                Periodo
+            </th>
+            <th>
                 Porcentaje Previsto
             </th>
             <th>
@@ -132,6 +135,10 @@
         @foreach (var item in ViewBag.Plandetalle)
         {
             <tr>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.porcentajePrevisto)%*@
+                    @item.numeroPeriodo
+                </td>
                 <td>
                     @*@Html.DisplayFor(modelItem => item.porcentajePrevisto)%*@
                     @item.porcentajePrevisto

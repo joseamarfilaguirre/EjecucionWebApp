@@ -26,7 +26,7 @@ namespace WebAppEjecucion.Controllers
         // GET: PlanTrabajo/Details/5
         public ActionResult Details(int? id)
         {
-            var plan = db.PlanTrabajoDetalle.Where(x => x.IdPlanTrabajo == id);
+            var plan = db.PlanTrabajoDetalle.Where(x => x.IdPlanTrabajo == id).OrderBy(x=>x.numeroPeriodo);
             //    var filteredData = db.Products.Local
             //.Where(x => x.Name.Contains(this.FilterTextBox.Text));
             //    this.productBindingSource.DataSource = filteredData;

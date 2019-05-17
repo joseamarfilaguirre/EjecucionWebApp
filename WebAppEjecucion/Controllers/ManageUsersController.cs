@@ -11,7 +11,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-
+using WebAppEjecucion.Models.ViewModels;
 
 namespace WebAppEjecucion.Controllers
 {
@@ -20,11 +20,22 @@ namespace WebAppEjecucion.Controllers
     {
         private ConexionEjecucionDB db = new ConexionEjecucionDB();
 
-        // GET: ManageUsers
-        public ActionResult Index(int result)
+        public ActionResult Index( int result, int pagina = 1)
         {
             ViewBag.resultado = result;
-            return View(db.AspNetUsers.ToList());
+            var cantidadRegistrosPorPagina = 5; // parámetro
+            var users = db.AspNetUsers
+                .OrderBy(x => x.Id)
+                .Skip((pagina - 1) * cantidadRegistrosPorPagina)
+                .Take(cantidadRegistrosPorPagina).ToList();
+            var totalDeRegistros = db.EmpresaConstructora.Count();
+            var modelo = new UsersViewModel();
+            modelo.Users = users;
+            modelo.PaginaActual = pagina;
+            modelo.TotalDeRegistros = totalDeRegistros;
+            modelo.RegistrosPorPagina = cantidadRegistrosPorPagina;
+            return View(modelo);
+            // return View(db.EmpresaConstructora.ToList());
         }
 
         // GET: ManageUsers/Details/5

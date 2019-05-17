@@ -1,5 +1,5 @@
 ﻿@using WebAppEjecucion.Models;
-@model IEnumerable<WebAppEjecucion.Models.AspNetUsers>
+@model WebAppEjecucion.Models.ViewModels.UsersViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -29,23 +29,23 @@ else if (ViewBag.resultado == 0)
     <table class="table table-responsive">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.UserName)
+                Username
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                Email
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmailConfirmed)
+                Email Confirmado
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
+                Numero de telefono
             </th>
             <th></th>
             <th></th>
             <th></th>
         </tr>
 
-        @foreach (var item in Model)
+        @foreach (var item in Model.Users)
         {
             var userid = item.Id;
             ConexionEjecucionDB db = new ConexionEjecucionDB();
@@ -94,3 +94,4 @@ else if (ViewBag.resultado == 0)
         }
 
     </table>
+@{Html.RenderPartial("_paginador", Model);}

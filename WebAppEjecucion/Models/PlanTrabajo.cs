@@ -33,7 +33,7 @@ namespace WebAppEjecucion.Models
         [Display(Name = "Fecha de Inicio")]
         [Required(ErrorMessage = "El campo Fecha de Inicio es Obligatorio")]
         [Column(TypeName = "date")]
-        public DateTime? FechaInicio { get; set; }
+        public DateTime FechaInicio { get; set; }
 
         [Display(Name = "Fecha de Finalizacion")]
         [Required(ErrorMessage = "El campo Fecha de Finalizacion es Obligatorio")]
