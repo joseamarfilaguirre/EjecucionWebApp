@@ -25,6 +25,8 @@ namespace WebAppEjecucion.Models
 
         public int? CantidadParaSorteo { get; set; }
 
+        public Double? Superficie { get; set; }
+
         public virtual Obra Obra { get; set; }
 
         public virtual Prototipos Prototipos { get; set; }

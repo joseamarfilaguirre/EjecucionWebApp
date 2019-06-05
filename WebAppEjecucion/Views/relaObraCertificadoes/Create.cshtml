@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Agregar Certificado</h2>
+<h2>Agregar Documentación Final</h2>
 
 
 @using (Html.BeginForm()) 
@@ -31,7 +31,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IdObra, "IdObra", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IdObra, "Obra", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("IdObra", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IdObra, "", new { @class = "text-danger" })
@@ -47,7 +47,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.idTipoCertificado, "idTipoCertificado", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.idTipoCertificado, "Tipo de Certificado", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("idTipoCertificado", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.idTipoCertificado, "", new { @class = "text-danger" })

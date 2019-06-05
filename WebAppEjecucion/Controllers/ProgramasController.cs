@@ -23,7 +23,7 @@ namespace WebAppEjecucion.Controllers
                 .OrderBy(x => x.IdPrograma)
                 .Skip((pagina - 1) * cantidadRegistrosPorPagina)
                 .Take(cantidadRegistrosPorPagina).ToList();
-            var totalDeRegistros = db.EmpresaConstructora.Count();
+            var totalDeRegistros = db.Programa.Count();
             var modelo = new ProgramasViewModel();
             modelo.Programas = programas;
             modelo.PaginaActual = pagina;

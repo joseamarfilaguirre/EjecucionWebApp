@@ -46,7 +46,19 @@
             @Html.DisplayFor(modelItem => item.fechaFinalizacion)
         </td>*@
         @using Microsoft.AspNet.Identity
-        @if (Request.IsAuthenticated && Roles.IsUserInRole(User.Identity.Name, "Administrador") && !item.Checkeado)
+        @if (
+            Request.IsAuthenticated 
+            &&
+            (Roles.IsUserInRole(User.Identity.Name, "Administrador")
+            ||
+            Roles.IsUserInRole(User.Identity.Name, "JefeCertificaciones")
+            ||
+            Roles.IsUserInRole(User.Identity.Name, "JefeTecnico")
+            ||
+            Roles.IsUserInRole(User.Identity.Name, "Inspector")
+            )
+            && 
+            !item.Checkeado)
         {
         <td>
             @Html.ActionLink("Ver Detalles", "Details", "Obras", new { id = item.IdObra }, new { @class = "btn btn-primary" })

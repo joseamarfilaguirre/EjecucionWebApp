@@ -16,10 +16,12 @@ namespace WebAppEjecucion.Models
         }
 
         [Key]
+        [Display(Name = "Categoria de Certificado")]
         public int idCatCertificado { get; set; }
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Categoria de Certificado")]
         public string CatCertificado { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

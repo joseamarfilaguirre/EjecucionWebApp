@@ -40,7 +40,7 @@ namespace WebAppEjecucion.Controllers
         public ActionResult Create(int id)
         {
             ViewBag.idPlan = id;
-            ViewBag.IdPlanTrabajo = new SelectList(db.PlanTrabajo.Where(o=>o.IdPlanTrabajo == id), "IdPlanTrabajo", "FechaInicio",id);
+            //ViewBag.IdPlanTrabajo = new SelectList(db.PlanTrabajo.Where(o=>o.IdPlanTrabajo == id), "IdPlanTrabajo", "FechaInicio",id);
             return View();
         }
         public static int MonthDifference(DateTime FechaFin, DateTime FechaInicio)
@@ -64,7 +64,7 @@ namespace WebAppEjecucion.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Details", "PlanTrabajo", new { id = planTrabajoDetalle.IdPlanTrabajo });
             }
-
+            ViewBag.idPlan = planTrabajoDetalle.IdPlanTrabajo;
             ViewBag.IdPlanTrabajo = new SelectList(db.PlanTrabajo, "IdPlanTrabajo", "IdPlanTrabajo", planTrabajoDetalle.IdPlanTrabajo);
             return View(planTrabajoDetalle);
         }
@@ -82,7 +82,7 @@ namespace WebAppEjecucion.Controllers
                 return HttpNotFound();
             }
             ViewBag.idPlan = planTrabajoDetalle.IdPlanTrabajo;
-            ViewBag.IdPlanTrabajo = new SelectList(db.PlanTrabajo.Where(p=>p.IdPlanTrabajo == planTrabajoDetalle.IdPlanTrabajo), "IdPlanTrabajo", "FechaInicio", planTrabajoDetalle.IdPlanTrabajo);
+            //ViewBag.IdPlanTrabajo = new SelectList(db.PlanTrabajo.Where(p=>p.IdPlanTrabajo == planTrabajoDetalle.IdPlanTrabajo), "IdPlanTrabajo", "FechaInicio", planTrabajoDetalle.IdPlanTrabajo);
             return View(planTrabajoDetalle);
         }
 

@@ -20,7 +20,7 @@
             <p>@Html.ActionLink("Seguimiento de Obra", "Index", "Seguimiento", new { id = Model.IdObra }, new { @class ="btn btn-info"})</p>
         </div>
         <div class="col col-md-2">
-            <p>@Html.ActionLink("Certificados de Obra", "Index", "RelaObraCertificadoes", new { id = Model.IdObra }, new { @class ="btn btn-info"})</p>
+            <p>@Html.ActionLink("Documentación final de Obra", "Index", "RelaObraCertificadoes", new { id = Model.IdObra }, new { @class ="btn btn-info"})</p>
         </div>
     </div>
     <hr />
@@ -41,7 +41,7 @@
         </dd>
 
        <dt>
-           Obra Padre
+           Obra Original
         </dt>
 
         <dd>
@@ -151,7 +151,20 @@
     </dl>
 </div>
 @using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated && Roles.IsUserInRole(User.Identity.Name, "Administrador") && !Model.Checkeado)
+@if (
+    //Request.IsAuthenticated && Roles.IsUserInRole(User.Identity.Name, "Administrador") && !Model.Checkeado)
+    Request.IsAuthenticated
+            &&
+            (Roles.IsUserInRole(User.Identity.Name, "Administrador")
+            ||
+            Roles.IsUserInRole(User.Identity.Name, "JefeCertificaciones")
+            ||
+            Roles.IsUserInRole(User.Identity.Name, "JefeTecnico")
+            ||
+            Roles.IsUserInRole(User.Identity.Name, "Inspector")
+            )
+            &&
+            !Model.Checkeado)
 {
     <p>
         @Html.ActionLink("Atras", "Index", "Obras", null, new { @class = "btn btn-danger" }) |

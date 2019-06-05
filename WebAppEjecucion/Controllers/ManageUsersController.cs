@@ -20,7 +20,7 @@ namespace WebAppEjecucion.Controllers
     {
         private ConexionEjecucionDB db = new ConexionEjecucionDB();
 
-        public ActionResult Index( int result, int pagina = 1)
+        public ActionResult Index( int? result, int pagina = 1)
         {
             ViewBag.resultado = result;
             var cantidadRegistrosPorPagina = 5; // parámetro
@@ -28,7 +28,7 @@ namespace WebAppEjecucion.Controllers
                 .OrderBy(x => x.Id)
                 .Skip((pagina - 1) * cantidadRegistrosPorPagina)
                 .Take(cantidadRegistrosPorPagina).ToList();
-            var totalDeRegistros = db.EmpresaConstructora.Count();
+            var totalDeRegistros = db.AspNetUsers.Count();
             var modelo = new UsersViewModel();
             modelo.Users = users;
             modelo.PaginaActual = pagina;

@@ -45,6 +45,14 @@
                 @Html.ValidationMessageFor(model => model.CantidadParaSorteo, "", new { @class = "text-danger" })
             </div>
         </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Superficie, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.porcentajeReal, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.EditorFor(model => model.Superficie)
+                @Html.ValidationMessageFor(model => model.Superficie, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

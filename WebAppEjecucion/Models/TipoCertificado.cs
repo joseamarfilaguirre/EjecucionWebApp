@@ -17,7 +17,7 @@ namespace WebAppEjecucion.Models
 
         [Key]
         public int IdTipoCertificado { get; set; }
-
+        [Display(Name = "Tipo de Certificado")]
         [Column("TipoCertificado")]
         [Required]
         [StringLength(100)]

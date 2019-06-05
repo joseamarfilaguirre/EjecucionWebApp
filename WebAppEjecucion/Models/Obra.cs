@@ -25,6 +25,7 @@ namespace WebAppEjecucion.Models
         }
 
         [Key]
+        [Display(Name = "Obra")]
         public int IdObra { get; set; }
 
         [StringLength(50)]
@@ -47,7 +48,7 @@ namespace WebAppEjecucion.Models
         [Display(Name = "Programa")]
         public int? IdPrograma { get; set; }
 
-        [Display(Name = "Obra Padre")]
+        [Display(Name = "Obra Original")]
         public int? IdObraPadre { get; set; }
 
         [Display(Name = "Cantidad Para Sorteo")]

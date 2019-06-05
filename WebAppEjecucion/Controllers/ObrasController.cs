@@ -87,7 +87,7 @@ namespace WebAppEjecucion.Controllers
         }
 
         // GET: Obras/Create
-       
+        [AccessDeniedAuthorize(Roles = "Administrador,Certificador,JefeCertificaciones,JefeTecnico,Inspector")]
         public ActionResult Create()
         {
             ViewBag.IdDptoProvincia = new SelectList(db.DptoProvincia, "IdDptoProvincia", "DptoProvincia1");
@@ -121,7 +121,7 @@ namespace WebAppEjecucion.Controllers
         }
 
         // GET: Obras/Edit/5
-        [AccessDeniedAuthorize(Roles = "Administrador,Certificador")]
+        [AccessDeniedAuthorize(Roles = "Administrador,Certificador,JefeCertificaciones,JefeTecnico,Inspector")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -161,6 +161,7 @@ namespace WebAppEjecucion.Controllers
         }
 
         // GET: Obras/Delete/5
+        [AccessDeniedAuthorize(Roles = "Administrador,Certificador,JefeCertificaciones,JefeTecnico")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

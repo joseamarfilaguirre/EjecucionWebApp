@@ -23,7 +23,7 @@ namespace WebAppEjecucion.Controllers
                 .OrderBy(x => x.IdPrototipo)
                 .Skip((pagina - 1) * cantidadRegistrosPorPagina)
                 .Take(cantidadRegistrosPorPagina).ToList();
-            var totalDeRegistros = db.EmpresaConstructora.Count();
+            var totalDeRegistros = db.Prototipos.Count();
             var modelo = new PrototiposViewModel();
             modelo.Prototipos = prototipos;
             modelo.PaginaActual = pagina;
@@ -58,7 +58,7 @@ namespace WebAppEjecucion.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdPrototipo,Prototipo")] Prototipos prototipos)
+        public ActionResult Create([Bind(Include = "IdPrototipo,Prototipo,Superficie,Codigo")] Prototipos prototipos)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace WebAppEjecucion.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdPrototipo,Prototipo")] Prototipos prototipos)
+        public ActionResult Edit([Bind(Include = "IdPrototipo,Prototipo,Superficie,Codigo")] Prototipos prototipos)
         {
             if (ModelState.IsValid)
             {

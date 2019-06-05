@@ -14,13 +14,17 @@ namespace WebAppEjecucion.Models
         public int IdrelaObraCertificado { get; set; }
 
         [Column(TypeName = "date")]
+        [Display(Name = "Fecha de Presentación")]
         public DateTime FechaPresentacion { get; set; }
 
+        [Display(Name = "Obra")]
         public int IdObra { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "Certificado")]
         public string Certificado { get; set; }
 
+        [Display(Name = "Tipo de Certificado")]
         public int idTipoCertificado { get; set; }
         public virtual TipoCertificado TipoCertificado { get; set; }
 

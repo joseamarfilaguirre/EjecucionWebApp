@@ -4,19 +4,24 @@
 @{
     ViewBag.Title = "Index";
 }
-@if (ViewBag.resultado == 1)
+@if (ViewBag.resultado != null)
 {
-    <div class="alert alert-success" role="alert">
-        La contraseña fue reseteada exitosamente!.
-    </div>
+    if (ViewBag.resultado == 1)
+    {
 
-}
-else if (ViewBag.resultado == 0)
-{
+        <div class="alert alert-success" role="alert">
+            La contraseña fue reseteada exitosamente!.
+        </div>
+    }
+    else if (ViewBag.resultado == 0)
+    {
     <div class="alert alert-danger" role="alert">
         Ocurrió un erro!
     </div>
+    }
 }
+
+
 <h2>Gestion de Usuarios</h2>
 <div class="row">
     <div class="col col-md-2">
